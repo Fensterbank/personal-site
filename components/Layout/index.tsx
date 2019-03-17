@@ -1,5 +1,6 @@
 import { createGlobalStyle, ThemeProvider, theme } from '../../theme';
 import React, { FunctionComponent } from 'react';
+import { Footer } from '../Footer';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -14,7 +15,26 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     height: 100%;
     width: 100%;
-    background-color: ${(props) => props.theme.similar1};
+    font-family: sans-serif;
+    background-color: #1b1822;
+    background-image: url('/static/layout/background.jpg');
+    background-size: cover;
+  }
+
+  #__next {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  a, a:visited { 
+    color: inherit;
+  }
+
+  a:visited:hover, a:hover {
+    color: #ffce90
   }
 `;
 
@@ -23,6 +43,7 @@ export const Layout: FunctionComponent = ({ children }) => (
     <React.Fragment>
       <GlobalStyle />
       {children}
+      <Footer />
     </React.Fragment>
   </ThemeProvider>
 )
