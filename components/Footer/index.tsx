@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styled from '../../theme';
 import { SocialLinks } from '../SocialLinks';
+import { useEffect } from 'react';
 
 export const Root = styled.div`
   display: flex;
@@ -15,18 +16,26 @@ export const Root = styled.div`
 `;
 
 export const LinkSection = styled.div`
-  a {
-    margin: 0 0.2em;
+  a, span {
+    margin: 0 0.5em;
   }
 `;
 
-export const Footer = () => (
-  <Root>
-    <span>© Frédéric Bolvin</span>
+export const Footer = () => {
+  useEffect(() => {
+    console.log('Footer did mount');
+
+    return () => {
+      console.log('Footer will unmount');
+    }
+  }, []);
+
+  return <Root>
     <SocialLinks />
     <LinkSection>
+      <span>© Frédéric Bolvin</span>
       <Link href="/impress"><a>Impressum</a></Link>
       <Link href="/privacy"><a>Datenschutz</a></Link>
     </LinkSection>
   </Root>
-)
+}

@@ -1,6 +1,7 @@
 import { createGlobalStyle, ThemeProvider, theme } from '../../theme';
 import React, { FunctionComponent } from 'react';
 import { Footer } from '../Footer';
+import { Header } from '../Header';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -42,6 +43,7 @@ export const Layout: FunctionComponent = ({ children }) => (
   <ThemeProvider theme={theme}>
     <React.Fragment>
       <GlobalStyle />
+      <Header />
       {children}
       <Footer />
     </React.Fragment>

@@ -1,13 +1,15 @@
 import styled from '../../theme';
 import { Skill } from '../Skill';
+import { useTransition, animated, config } from 'react-spring';
+import { useState, useEffect } from 'react';
 
-export const Root = styled.div`
+export const Root = styled(animated.div)`
   background-color: rgba(255,255,255,0.1);
   border-radius: 0.5em;
   flex-grow: 1;
   width: 40em;
   max-width: 70%;
-  margin: 2em auto;
+  margin: 0 auto;
   padding: 1em;
 `;
 
@@ -100,9 +102,23 @@ const skills = [
   },
 ]
 
-export const Skillset = () => (
-  <Root>
-    {skills.map(skill =>
-      <Skill key={skill.title} title={skill.title} image={skill.image} />)}
-  </Root>
-)
+export const Skillset = () => {
+  const [visible, setVisible] = useState(false)
+  const transitions = useTransition(visible, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: config.slow,
+  });
+
+  useEffect(() => {
+    window.setTimeout(() => setVisible(true), 2000);
+  }, []);
+
+  return transitions.map(({ item, key, props }) =>
+    item && <Root key={key} style={props}>
+      {skills.map(skill =>
+        <Skill key={skill.title} title={skill.title} image={skill.image} />)}
+    </Root>
+  )
+};
