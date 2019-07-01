@@ -6,6 +6,8 @@ export const Root = styled.div`
   display: flex;
   flex-flow: column;
   align-items: center;
+  height: 14rem;
+  flex-shrink: 0;
 
   & img {
     display: block;
@@ -24,6 +26,6 @@ export const Root = styled.div`
 export const Header = () => {
   return <Root>
     <Fading delay={500}><Link href="/"><a><img src="/static/logo.png" alt="Logo Frédéric Bolvin IT &amp; Entwicklung" /></a></Link></Fading>
-    <Fading delay={1000}><p>Expert Software Engineer ◈ Open Source Enthusiast ◈ Freelancer</p></Fading>
+    <Fading delay={1000}><p>IT Freelancer ◈ Open Source Enthusiast ◈ Building web apps</p></Fading>
   </Root>
 };

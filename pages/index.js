@@ -1,8 +1,10 @@
+import { useEffect, useState, Fragment } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { SocialLinks } from '../components/SocialLinks';
 import { Skillset } from '../components/Skillset';
-import { useEffect } from 'react';
+import { Fading } from '../components/Fading';
+import { useTransition, animated, config } from 'react-spring';
 import styled from '../theme';
 
 const AboutMe = styled.p`
@@ -10,14 +12,6 @@ const AboutMe = styled.p`
 `
 
 const Index = () => {
-  useEffect(() => {
-    console.log('IndexPage did mount');
-
-    return () => {
-      console.log('IndexPage will unmount');
-    }
-  }, []);
-
   return <React.Fragment>
     <Head>
       <title>Frédéric Bolvin - IT & Entwicklung</title>

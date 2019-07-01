@@ -1,6 +1,7 @@
 import React from 'react';
 import App, { Container } from 'next/app';
 import { Layout } from '../components/Layout';
+import { Fading } from '../components/Fading';
 import styled from '../theme';
 
 const Page = styled.div`
@@ -10,7 +11,28 @@ const Page = styled.div`
   padding: 0 3em;
   color: #a1a1a1;
   font-size: 0.8em;
-  margin: 2em 0;
+  margin: 0 0 2em 0;
+
+  @media (max-width: 400px) { 
+    padding: 0 1em;
+  }
+`;
+
+const PageContent = styled.div`
+  width: 50%;
+  margin: 0 auto;
+
+  @media (max-width: 1200px) { 
+    width: 60%;
+  }
+
+  @media (max-width: 800px) { 
+    width: 70%;
+  }
+
+  @media (max-width: 500px) { 
+    width: 100%;
+  }
 `;
 
 class MyApp extends App {
@@ -24,14 +46,18 @@ class MyApp extends App {
     return { pageProps }
   }
 
-  render () {
+  render() {
     const { Component, pageProps } = this.props
 
     return (
       <Container>
         <Layout>
           <Page>
-            <Component {...pageProps} />
+            <PageContent>
+              <Fading delay={1800}>
+                <Component {...pageProps} />
+              </Fading>
+            </PageContent>
           </Page>
         </Layout>
       </Container>

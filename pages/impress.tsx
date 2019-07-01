@@ -1,8 +1,16 @@
-import { FunctionComponent, Fragment } from 'react';
+import { FunctionComponent, Fragment, useEffect } from 'react';
 import Head from 'next/head';
 
-const Impress: FunctionComponent = () => (
-  <Fragment>
+const Impress: FunctionComponent = () => {
+  useEffect(() => {
+    console.log('ImpressPage did mount');
+
+    return () => {
+      console.log('ImpressPage will unmount');
+    }
+  }, []);
+
+  return <Fragment>
     <Head>
       <title>Impressum | Frédéric Bolvin - IT & Entwicklung</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
@@ -17,7 +25,8 @@ const Impress: FunctionComponent = () => (
     <p>
       <b>Haftungshinweis:</b><br />
       Der Betreiber übernimmt keine Haftung für Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
-    </p>
+  </p>
   </Fragment>
-      );
-      export default Impress;
+}
+
+export default Impress;

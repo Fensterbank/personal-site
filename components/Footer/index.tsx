@@ -13,6 +13,7 @@ export const Root = styled.div`
   font-size: 0.8em;
   height: 3em;
   padding: 0 1em;
+  flex-shrink: 0;
 `;
 
 export const LinkSection = styled.div`
