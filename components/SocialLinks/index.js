@@ -1,4 +1,5 @@
 import styled from '../../theme';
+import { Hidden } from '../Hidden';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub, faXing, faStackOverflow } from '@fortawesome/free-brands-svg-icons';
 import { useTransition, animated, config } from 'react-spring';
@@ -84,9 +85,12 @@ export const SocialLinks = () => {
     {transitions.map(({ item, props, key }) =>
       <animated.div key={key} style={props}>
         <Link key={item.icon.iconName} target="_blank" href={item.href} title={item.title}>
-          <FontAwesomeIcon size="2x" icon={item.icon} />
+          <FontAwesomeIcon size="2x" icon={item.icon} alt={item.title} />
         </Link>
       </animated.div>
     )}
+    <Hidden>
+      {links.map(item => <Link key={item.icon.iconName} target="_blank" href={item.href} title={item.title}>{item.title}</Link>)}
+    </Hidden>
   </Root>
 }

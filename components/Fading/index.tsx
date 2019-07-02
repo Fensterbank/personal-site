@@ -1,5 +1,6 @@
 import { useTransition, animated, config } from 'react-spring';
 import { useState, useEffect, FunctionComponent, ReactElement, Fragment } from 'react';
+import { Hidden } from '../Hidden';
 
 interface iProps {
   delay: number;
@@ -18,7 +19,10 @@ export const Fading: FunctionComponent<iProps> = ({ delay = 500, children }) => 
     window.setTimeout(() => setVisible(true), delay);
   }, []);
 
-  return <Fragment>{transitions.map(({ item, key, props }) =>
-    item && <animated.div key={key} style={props}>{children}</animated.div>
-  )}</Fragment>
+  return <Fragment>
+    <Hidden>{children}</Hidden>
+    {transitions.map(({ item, key, props }) =>
+      item && <animated.div key={key} style={props}>{children}</animated.div>
+    )}
+  </Fragment>
 };
