@@ -1,7 +1,7 @@
 import styled from '../../theme';
 import { Skill } from '../Skill';
 import { useTransition, animated, config } from 'react-spring';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FunctionComponent, Fragment } from 'react';
 
 export const Root = styled(animated.div)`
   background-color: rgba(255,255,255,0.1);
@@ -102,7 +102,7 @@ const skills = [
   },
 ]
 
-export const Skillset = () => {
+export const Skillset: FunctionComponent = () => {
   const [visible, setVisible] = useState(false)
   const transitions = useTransition(visible, null, {
     from: { opacity: 0 },
@@ -115,10 +115,10 @@ export const Skillset = () => {
     window.setTimeout(() => setVisible(true), 2000);
   }, []);
 
-  return transitions.map(({ item, key, props }) =>
+  return <Fragment>{transitions.map(({ item, key, props }) =>
     item && <Root key={key} style={props}>
       {skills.map(skill =>
         <Skill key={skill.title} title={skill.title} image={skill.image} />)}
     </Root>
-  )
+  )}</Fragment>
 };

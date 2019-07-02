@@ -3,12 +3,11 @@ import Head from 'next/head';
 
 const Impress: FunctionComponent = () => {
   useEffect(() => {
-    console.log('ImpressPage did mount');
-
-    return () => {
-      console.log('ImpressPage will unmount');
+    if (window._paq) {
+      window._paq.push(['setDocumentTitle', document.title]);
+      window._paq.push(['trackPageView']);
     }
-  }, []);
+  });
 
   return <Fragment>
     <Head>

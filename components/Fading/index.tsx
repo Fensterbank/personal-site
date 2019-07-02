@@ -1,5 +1,5 @@
 import { useTransition, animated, config } from 'react-spring';
-import { useState, useEffect, FunctionComponent, ReactElement } from 'react';
+import { useState, useEffect, FunctionComponent, ReactElement, Fragment } from 'react';
 
 interface iProps {
   delay: number;
@@ -13,12 +13,12 @@ export const Fading: FunctionComponent<iProps> = ({ delay = 500, children }) => 
     leave: { transform: 'translate3d(0,-40px,0)' },
     config: config.wobbly,
   });
-  
+
   useEffect(() => {
     window.setTimeout(() => setVisible(true), delay);
   }, []);
 
-  return transitions.map(({ item, key, props }) =>
+  return <Fragment>{transitions.map(({ item, key, props }) =>
     item && <animated.div key={key} style={props}>{children}</animated.div>
-  )
+  )}</Fragment>
 };

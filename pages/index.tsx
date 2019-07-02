@@ -1,18 +1,25 @@
-import { useEffect, useState, Fragment } from 'react';
-import Link from 'next/link';
+import { useEffect, Fragment } from 'react';
 import Head from 'next/head';
-import { SocialLinks } from '../components/SocialLinks';
 import { Skillset } from '../components/Skillset';
-import { Fading } from '../components/Fading';
-import { useTransition, animated, config } from 'react-spring';
 import styled from '../theme';
 
 const AboutMe = styled.p`
   text-align: center;
 `
 
+declare global {
+  interface Window { _paq: any; }
+}
+
 const Index = () => {
-  return <React.Fragment>
+  useEffect(() => {
+    if (window._paq) {
+      window._paq.push(['setDocumentTitle', document.title]);
+      window._paq.push(['trackPageView']);
+    }
+  });
+
+  return <Fragment>
     <Head>
       <title>Frédéric Bolvin - IT & Entwicklung</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
@@ -23,7 +30,7 @@ const Index = () => {
       Ich schätze die Freiheit des Internets und liebe es, großartige Dinge darin zu erschaffen.
     </AboutMe>
     <Skillset />
-  </React.Fragment>
+  </Fragment>
 }
 
 export default Index;
