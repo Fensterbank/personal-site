@@ -76,11 +76,8 @@ export const SocialLinks = () => {
   useEffect(() => {
     if (items.length !== links.length)
       window.setTimeout(() => setItems([...items, links[items.length]]), 300);
-    else
-      console.log('finished');
   }, [items]);
 
-  // TODO: These links are not rendered on page load, therefore will not be indexed by search engines. Should be fixed.
   return <Root>
     {transitions.map(({ item, props, key }) =>
       <animated.div key={key} style={props}>

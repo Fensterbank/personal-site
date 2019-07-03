@@ -20,7 +20,7 @@ export const Fading: FunctionComponent<iProps> = ({ delay = 500, children }) => 
   }, []);
 
   return <Fragment>
-    <Hidden>{children}</Hidden>
+    {!visible && <Hidden>{children}</Hidden>}
     {transitions.map(({ item, key, props }) =>
       item && <animated.div key={key} style={props}>{children}</animated.div>
     )}

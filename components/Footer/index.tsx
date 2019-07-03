@@ -23,14 +23,6 @@ export const LinkSection = styled.div`
 `;
 
 export const Footer = () => {
-  useEffect(() => {
-    console.log('Footer did mount');
-
-    return () => {
-      console.log('Footer will unmount');
-    }
-  }, []);
-
   return <Root>
     <SocialLinks />
     <LinkSection>

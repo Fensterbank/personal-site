@@ -1,9 +1,10 @@
 import styled from '../../theme';
 import { FunctionComponent } from 'react';
+import { useSpring, animated, config } from 'react-spring';
 
-export const Root = styled.img`
-  height: 2.5em;
-  max-width: 2.5em;
+export const Root = styled(animated.img)`
+  height: 90%;
+  max-width: 90%;
 `;
 
 interface iProps {
@@ -11,6 +12,8 @@ interface iProps {
   title: string;
 };
 
-export const Skill: FunctionComponent<iProps> = ({image, title}) => (
-  <Root src={image ? `/static/skills/${image}` : `/static/skills/${title.toLowerCase()}.svg` } title={title} />
-)
+export const Skill: FunctionComponent<iProps> = ({image, title}) => {
+  const props = {} //useSpring({ left: `${(index * 2 + (tick / 5))}em`, config: config.slow });
+
+  return <Root style={props} src={image ? `/static/skills/${image}` : `/static/skills/${title.toLowerCase()}.svg` } title={title} />
+}

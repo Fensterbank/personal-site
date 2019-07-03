@@ -1,124 +1,90 @@
 import styled from '../../theme';
 import { Skill } from '../Skill';
-import { useTransition, animated, config } from 'react-spring';
-import { useState, useEffect, FunctionComponent, Fragment } from 'react';
+import { animated, config, useSprings } from 'react-spring';
+import { useState, useEffect, FunctionComponent, Fragment, ReactElement, useLayoutEffect, useRef } from 'react';
+import { shuffle } from 'lodash';
 
-export const Root = styled(animated.div)`
-  background-color: rgba(255,255,255,0.1);
-  border-radius: 0.5em;
-  flex-grow: 1;
-  width: 40em;
-  max-width: 70%;
-  margin: 0 auto;
-  padding: 1em;
+const iconSize = 50;
+
+export const Root = styled.div`
+  width: 50%;
+  height: 100%;
+  position: relative;
 `;
 
-const skills = [
-  {
-    title: 'C#',
-    image: 'csharp.svg',
-  },
-  {
-    title: 'CSS3',
-  },
-  {
-    title: 'Docker',
-  },
-  {
-    title: 'Microsoft .NET',
-    image: 'dotnet.svg',
-  },
-  {
-    title: 'Git',
-  },
-  {
-    title: 'HTML5',
-  },
-  {
-    title: 'Java',
-  },
-  {
-    title: 'JavaScript',
-  },
-  {
-    title: 'Linux',
-  },
-  {
-    title: 'Microsoft Windows',
-    image: 'microsoft-windows.svg',
-  },
-  {
-    title: 'MySQL',
-  },
-  {
-    title: 'NextJS',
-  },
-  {
-    title: 'NodeJS',
-  },
-  {
-    title: 'NPM',
-  },
-  {
-    title: 'PHP',
-  },
-  {
-    title: 'Ruby on Rails',
-    image: 'rails.svg',
-  },
-  {
-    title: 'React',
-  },
-  {
-    title: 'Redux',
-  },
-  {
-    title: 'Ruby',
-  },
-  {
-    title: 'Sass',
-  },
-  {
-    title: 'Microsoft SharePoint',
-    image: 'sharepoint.png',
-  },
-  {
-    title: 'Microsoft SQL Server',
-    image: 'sql-server.png',
-  },
-  {
-    title: 'TypeScript',
-  },
-  {
-    title: 'VS Code',
-    image: 'visual-studio-code.svg',
-  },
-  {
-    title: 'Microsoft Visual Studio',
-    image: 'visualstudio.svg',
-  },
-  {
-    title: 'Webpack',
-  },
-]
+const Tile = styled(animated.div)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+`;
 
-export const Skillset: FunctionComponent = () => {
-  const [visible, setVisible] = useState(false)
-  const transitions = useTransition(visible, null, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    config: config.slow,
-  });
+interface Dimensions {
+  width: number;
+  height: number;
+}
+
+interface SkillsetProps {
+  children: any[];
+  direction: string;
+}
+
+const defaultRadius = 120, defaultIconSize = 50;
+
+export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction }) => {
+  const containerEl = useRef(null);
+  const [skillArray] = useState(shuffle(children));
+  const [radius, setRadius] = useState(defaultRadius);
+  const [iconSize, setIconSize] = useState(defaultIconSize);
+  const [angleOffset, setAngleOffset] = useState(0);
+  const [mouseOver, setMouseOver] = useState(false);
+  const [dimensions, setDimensions] = useState<Dimensions | null>(null);
+
+  const onMouseEnter = () => {
+    setMouseOver(true);
+    setRadius(130);
+    setIconSize(60);
+  }
+
+  const onMouseLeave = () => {
+    setMouseOver(false);
+    setRadius(defaultRadius);
+    setIconSize(defaultIconSize);
+  }
 
   useEffect(() => {
-    window.setTimeout(() => setVisible(true), 2000);
+    const interval = window.setInterval(() => setAngleOffset(angle => angle + 0.002), 10);
+    return () => window.clearInterval(interval);
   }, []);
 
-  return <Fragment>{transitions.map(({ item, key, props }) =>
-    item && <Root key={key} style={props}>
-      {skills.map(skill =>
-        <Skill key={skill.title} title={skill.title} image={skill.image} />)}
-    </Root>
-  )}</Fragment>
+  const calcPosition = (index: number) => {
+    if (dimensions == null)
+      return { left: `0px`, top: `0px`, width: `${iconSize}px`, height: `${iconSize}px` };
+
+    const angle = index * ((2 * Math.PI) / skillArray.length) + ((mouseOver ? 0 : angleOffset) * (direction === 'right' ? 1 : -1));
+    const x = Math.round(dimensions.width / 2 + radius * Math.cos(angle) - iconSize / 2);
+    const y = Math.round(dimensions.height / 2 + radius * Math.sin(angle) - iconSize / 2);
+    return { left: `${x}px`, top: `${y}px`, width: `${iconSize}px`, height: `${iconSize}px`, config: mouseOver ? config.gentle : config.molasses };
+  }
+
+  useLayoutEffect(() => {
+    if (containerEl.current)
+      setDimensions({
+        width: containerEl.current!.clientWidth,
+        height: containerEl.current!.clientHeight,
+      });
+  }, []);
+
+  const [springs, set, stop] = useSprings(skillArray.length, index => calcPosition(index));
+
+  // Update springs with new props
+  set(index => calcPosition(index));
+
+  return <Root onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} ref={containerEl}>
+    {springs.map((props, index) => {
+      const skill = skillArray[index];
+      return <Tile key={skill.title} style={props}><Skill key={skill.title} title={skill.title} image={skill.image} /></Tile>;
+    })}
+  </Root>
+
 };
