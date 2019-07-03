@@ -25,6 +25,7 @@ export default class MyCustomDocument extends Document {
     return (
       <html>
         <Head>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
           {this.props.styleTags}
           <script type="text/javascript" dangerouslySetInnerHTML={{ __html: trackingScript }} />
         </Head>

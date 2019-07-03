@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import styled from '../../theme';
 import { SocialLinks } from '../SocialLinks';
-import { useEffect } from 'react';
 
 export const Root = styled.div`
   display: flex;
@@ -14,6 +13,10 @@ export const Root = styled.div`
   height: 3em;
   padding: 0 1em;
   flex-shrink: 0;
+
+  @media (max-width: 500px) { 
+    font-size: 0.6em;
+  }
 `;
 
 export const LinkSection = styled.div`

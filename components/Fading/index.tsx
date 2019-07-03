@@ -1,4 +1,4 @@
-import { useTransition, animated, config } from 'react-spring';
+import { useTransition, animated, config, SpringConfig } from 'react-spring';
 import { useState, useEffect, FunctionComponent, ReactElement, Fragment } from 'react';
 import { Hidden } from '../Hidden';
 

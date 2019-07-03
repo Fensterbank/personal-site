@@ -12,13 +12,17 @@ const Impress: FunctionComponent = () => {
   return <Fragment>
     <Head>
       <title>Impressum | Frédéric Bolvin - IT & Entwicklung</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
     </Head>
     <h1>Impressum</h1>
     <p>
       Frédéric Bolvin<br />
       Öschweg 15<br />
       72555 Metzingen<br />
+    </p>
+
+    <p>
+      <b>Mail:</b> <a href="mailto:frederic@bol.vin">frederic@bol.vin</a><br />
+      <b>Mobil:</b> 0176-24472011
     </p>
 
     <p>

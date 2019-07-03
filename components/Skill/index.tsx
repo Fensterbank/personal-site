@@ -1,8 +1,15 @@
 import styled from '../../theme';
-import { FunctionComponent } from 'react';
-import { useSpring, animated, config } from 'react-spring';
+import { FunctionComponent, CSSProperties } from 'react';
+import { animated } from 'react-spring';
 
-export const Root = styled(animated.img)`
+const Root = styled(animated.a)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+`;
+
+const Icon = styled.img`
   height: 90%;
   max-width: 90%;
 `;
@@ -10,10 +17,9 @@ export const Root = styled(animated.img)`
 interface iProps {
   image?: string;
   title: string;
+  href: string;
+  style: CSSProperties;
 };
 
-export const Skill: FunctionComponent<iProps> = ({image, title}) => {
-  const props = {} //useSpring({ left: `${(index * 2 + (tick / 5))}em`, config: config.slow });
-
-  return <Root style={props} src={image ? `/static/skills/${image}` : `/static/skills/${title.toLowerCase()}.svg` } title={title} />
-}
+export const Skill: FunctionComponent<iProps> = ({ image, title, style, href }) =>
+  <Root style={style} target="_blank" href={href}><Icon src={image ? `/static/skills/${image}` : `/static/skills/${title.toLowerCase()}.svg`} title={title} /></Root>

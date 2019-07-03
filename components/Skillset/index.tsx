@@ -1,95 +1,106 @@
 import styled from '../../theme';
 import { Skill } from '../Skill';
-import { animated, config, useSprings } from 'react-spring';
-import { useState, useEffect, FunctionComponent, Fragment, ReactElement, useLayoutEffect, useRef } from 'react';
-import { shuffle } from 'lodash';
+import { config, useSprings } from 'react-spring';
+import { useState, useEffect, FunctionComponent, useLayoutEffect, useRef, CSSProperties } from 'react';
+import { shuffle, debounce } from 'lodash';
 
-const iconSize = 50;
+const defaultRadius = 120, defaultIconSize = 50;
+const bigRadius = defaultRadius * 1.1, bigIconSize = defaultIconSize * 1.1;
 
 export const Root = styled.div`
   width: 50%;
-  height: 100%;
   position: relative;
-`;
 
-const Tile = styled(animated.div)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
+  @media (max-width: 500px) { 
+    width: 100%;
+  }
 `;
-
-interface Dimensions {
-  width: number;
-  height: number;
-}
 
 interface SkillsetProps {
   children: any[];
   direction: string;
 }
 
-const defaultRadius = 120, defaultIconSize = 50;
+interface Size {
+  default: number;
+  hovered: number;
+};
 
 export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction }) => {
-  const containerEl = useRef(null);
+  const containerEl = useRef<HTMLDivElement>(null);
   const [skillArray] = useState(shuffle(children));
-  const [radius, setRadius] = useState(defaultRadius);
-  const [iconSize, setIconSize] = useState(defaultIconSize);
+
+  const [radius, setRadius] = useState<Size>({
+    default: defaultRadius,
+    hovered: bigRadius,
+  });
+  const [iconSize] = useState<Size>({
+    default: defaultIconSize,
+    hovered: bigIconSize,
+  });
   const [angleOffset, setAngleOffset] = useState(0);
   const [mouseOver, setMouseOver] = useState(false);
-  const [dimensions, setDimensions] = useState<Dimensions | null>(null);
   const [showSkills, setShowSkills] = useState(false);
 
-  const onMouseEnter = () => {
-    setMouseOver(true);
-    setRadius(130);
-    setIconSize(60);
+  const circleSize = radius.hovered * 2 + iconSize.hovered;
+
+  const calcRadius = () => {
+    if (containerEl.current) {
+      const dimensions = {
+        width: containerEl.current!.clientWidth,
+        height: containerEl.current!.clientHeight,
+      };
+      if (dimensions.width > 0) {
+        const calcRadius = (dimensions.width - iconSize.hovered) / 2;
+        const r = {
+          default: Math.round(calcRadius - calcRadius * 0.1),
+          hovered: Math.round(calcRadius),
+        };
+        setRadius(r);
+      }
+    }
   }
 
-  const onMouseLeave = () => {
-    setMouseOver(false);
-    setRadius(defaultRadius);
-    setIconSize(defaultIconSize);
-  }
-
+  const onMouseEnter = () => setMouseOver(true);
+  const onMouseLeave = () => setMouseOver(false);
+  const onResize = () => calcRadius();
+  
   useEffect(() => {
-    const interval = window.setInterval(() => setAngleOffset(angle => angle + 0.002), 10);
+    const interval = window.setInterval(() => setAngleOffset(angle => angle + 0.003), 10);
     const timeout = window.setTimeout(() => setShowSkills(true), 1000);
+    const debouncedOnResize = debounce(onResize, 300);
+    window.addEventListener('resize', debouncedOnResize);
     return () => {
       window.clearInterval(interval);
       window.clearTimeout(timeout);
+      window.removeEventListener('resize', debouncedOnResize);
     };
   }, []);
 
-  const calcPosition = (index: number) => {
-    if (dimensions == null)
-      return { left: `0px`, top: `0px`, width: `${iconSize}px`, height: `${iconSize}px` };
+  const calcPosition = (index: number): any => {
+    let cRadius, cIconSize, cAngleOffset;
+    if (mouseOver)
+      cRadius = radius.hovered, cIconSize = iconSize.hovered, cAngleOffset = 0;
+    else
+      cRadius = radius.default, cIconSize = iconSize.default, cAngleOffset = angleOffset;
 
-    const angle = index * ((2 * Math.PI) / skillArray.length) + ((mouseOver ? 0 : angleOffset) * (direction === 'right' ? 1 : -1));
-    const x = Math.round(dimensions.width / 2 + radius * Math.cos(angle) - iconSize / 2);
-    const y = Math.round(dimensions.height / 2 + radius * Math.sin(angle) - iconSize / 2);
-    return { left: `${x}px`, top: `${y}px`, width: `${iconSize}px`, height: `${iconSize}px`, config: mouseOver ? config.gentle : config.molasses };
+    const angle = index * ((2 * Math.PI) / skillArray.length) + (cAngleOffset * (direction === 'right' ? 1 : -1));
+    const x = Math.round(circleSize / 2 + cRadius * Math.cos(angle) - cIconSize / 2);
+    const y = Math.round(circleSize / 2 + cRadius * Math.sin(angle) - cIconSize / 2);
+    return { left: `${x}px`, top: `${y}px`, width: `${cIconSize}px`, height: `${cIconSize}px`, config: mouseOver ? config.gentle : config.molasses };
   }
 
-  useLayoutEffect(() => {
-    if (containerEl.current)
-      setDimensions({
-        width: containerEl.current!.clientWidth,
-        height: containerEl.current!.clientHeight,
-      });
-  }, []);
+  useLayoutEffect(() => calcRadius(), []);
 
-  const [springs, set, stop] = useSprings(skillArray.length, index => calcPosition(index));
+  const [springs, set] = useSprings(skillArray.length, index => calcPosition(index));
 
-  // Update springs with new props
-  set(index => calcPosition(index));
+  // FIXME: Typing is not working properly
+  set((((index: number) => calcPosition(index)) as any));
 
-  return <Root onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} ref={containerEl}>
-    {showSkills && springs.map((props, index) => {
+  return <Root onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} ref={containerEl} style={{ height: `${circleSize}px` }}>
+    {showSkills && springs.map((props: CSSProperties, index: number) => {
       const skill = skillArray[index];
-      return <Tile key={skill.title} style={props}><Skill key={skill.title} title={skill.title} image={skill.image} /></Tile>;
+      return <Skill key={skill.title} title={skill.title} image={skill.image} style={props} href={skill.href} />;
     })}
   </Root>
-
 };

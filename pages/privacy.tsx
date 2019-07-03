@@ -13,7 +13,6 @@ const Privacy: FunctionComponent = () => {
     <Fragment>
       <Head>
         <title>Datenschutzerklärung | Frédéric Bolvin - IT & Entwicklung</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
       </Head>
       <h1>Datenschutzerklärung</h1>
       <h2>1. Datenschutz auf einen Blick</h2>
