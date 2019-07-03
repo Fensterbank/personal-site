@@ -33,7 +33,7 @@ const Index = () => {
       Benötigen Sie Unterstützung in Ihrem Projekt? Gerne können Sie mich <Link href="/impress"><a>unverbindlich kontaktieren</a></Link>.
     </p>
     <SkillContainer>
-      {<Skillset direction="right">{[
+      {<Skillset direction="right" speed={4}>{[
         {
           title: 'C#',
           image: 'csharp.svg',
@@ -90,7 +90,7 @@ const Index = () => {
         },
       ]
       }</Skillset>}
-      <Skillset direction="left">{[
+      <Skillset direction="left" speed={6}>{[
         {
           title: 'Git',
           href: 'https://git-scm.com/',

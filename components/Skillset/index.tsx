@@ -19,6 +19,7 @@ export const Root = styled.div`
 interface SkillsetProps {
   children: any[];
   direction: string;
+  speed: number;
 }
 
 interface Size {
@@ -26,7 +27,7 @@ interface Size {
   hovered: number;
 };
 
-export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction }) => {
+export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction, speed }) => {
   const containerEl = useRef<HTMLDivElement>(null);
   const [skillArray] = useState(shuffle(children));
 
@@ -64,16 +65,36 @@ export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction
   const onMouseEnter = () => setMouseOver(true);
   const onMouseLeave = () => setMouseOver(false);
   const onResize = () => calcRadius();
+
+  const fps = 60;
+  let now;
+  let then = Date.now();
+  let interval = 1000/fps;
+  let delta;
+  let frameID: number;
+  const tick = () => {
+    now = Date.now();
+    delta = now - then;
+     
+    if (delta > interval) {
+      then = now - (delta % interval);
+      setAngleOffset(angle => angle + speed / 1000);
+    }
+
+    frameID = window.requestAnimationFrame(tick);
+  }
   
   useEffect(() => {
-    const interval = window.setInterval(() => setAngleOffset(angle => angle + 0.003), 10);
-    const timeout = window.setTimeout(() => setShowSkills(true), 1000);
+    const timeout = window.setTimeout(() => {
+      setShowSkills(true);
+      frameID = window.requestAnimationFrame(tick);
+    }, 1000);
     const debouncedOnResize = debounce(onResize, 300);
     window.addEventListener('resize', debouncedOnResize);
     return () => {
-      window.clearInterval(interval);
       window.clearTimeout(timeout);
       window.removeEventListener('resize', debouncedOnResize);
+      window.cancelAnimationFrame(frameID);
     };
   }, []);
 
