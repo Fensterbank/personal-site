@@ -26,7 +26,9 @@ const Index = () => {
       <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
     </Head>
     <AboutMe>
-      Mein Name ist <strong>Frédéric Bolvin</strong> und ich bin Softwareentwickler mit Schwerpunkt im Bereich der modernen Webentwicklung.<br />
+      Mein Name ist <strong>Frédéric Bolvin</strong> und ich bin Softwareentwickler mit Schwerpunkt im Bereich der modernen Webentwicklung.
+    </AboutMe>
+    <AboutMe>
       Ich lebe in Deutschland und arbeite als	<strong>Expert Software Engineer</strong> in einem großen Unternehmen.<br />
       Ich schätze die Freiheit des Internets und liebe es, großartige Dinge darin zu erschaffen.
     </AboutMe>

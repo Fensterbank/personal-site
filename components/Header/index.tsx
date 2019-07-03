@@ -18,7 +18,7 @@ export const Root = styled.div`
 
   & p {
     color: rgba(255,255,255,0.6);
-    font-size: 1em;
+    font-size: 1.5em;
     margin: 0;
   }
 `;

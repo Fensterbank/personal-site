@@ -39,6 +39,7 @@ export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction
   const [angleOffset, setAngleOffset] = useState(0);
   const [mouseOver, setMouseOver] = useState(false);
   const [dimensions, setDimensions] = useState<Dimensions | null>(null);
+  const [showSkills, setShowSkills] = useState(false);
 
   const onMouseEnter = () => {
     setMouseOver(true);
@@ -54,7 +55,11 @@ export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction
 
   useEffect(() => {
     const interval = window.setInterval(() => setAngleOffset(angle => angle + 0.002), 10);
-    return () => window.clearInterval(interval);
+    const timeout = window.setTimeout(() => setShowSkills(true), 1000);
+    return () => {
+      window.clearInterval(interval);
+      window.clearTimeout(timeout);
+    };
   }, []);
 
   const calcPosition = (index: number) => {
@@ -81,7 +86,7 @@ export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction
   set(index => calcPosition(index));
 
   return <Root onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} ref={containerEl}>
-    {springs.map((props, index) => {
+    {showSkills && springs.map((props, index) => {
       const skill = skillArray[index];
       return <Tile key={skill.title} style={props}><Skill key={skill.title} title={skill.title} image={skill.image} /></Tile>;
     })}

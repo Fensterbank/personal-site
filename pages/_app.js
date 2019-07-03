@@ -3,6 +3,7 @@ import App, { Container } from 'next/app';
 import { Layout } from '../components/Layout';
 import { Fading } from '../components/Fading';
 import styled from '../theme';
+import { config } from 'react-spring';
 
 const Page = styled.div`
   flex-grow: 1;
@@ -10,7 +11,7 @@ const Page = styled.div`
   overflow-y: auto;
   padding: 0 3em;
   color: #a1a1a1;
-  font-size: 0.8em;
+  font-size: 1.1em;
   margin: 0 0 2em 0;
 
   @media (max-width: 400px) { 
@@ -19,19 +20,27 @@ const Page = styled.div`
 `;
 
 const PageContent = styled.div`
-  width: 50%;
+  width: 60%;
   margin: 0 auto;
+  height: 100%;
 
   @media (max-width: 1200px) { 
-    width: 60%;
+    width: 80%;
   }
 
   @media (max-width: 800px) { 
-    width: 70%;
+    width: 80%;
   }
 
   @media (max-width: 500px) { 
     width: 100%;
+  }
+
+  & > div {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    height: 100%;
   }
 `;
 
@@ -54,7 +63,7 @@ class MyApp extends App {
         <Layout>
           <Page>
             <PageContent>
-              <Fading delay={1800}>
+              <Fading delay={1800} springConfig={config.default}>
                 <Component {...pageProps} />
               </Fading>
             </PageContent>
