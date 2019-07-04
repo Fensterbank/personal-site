@@ -7,7 +7,7 @@ export const SkillContainer = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media (max-width: 500px) { 
+  @media (max-width: 750px) { 
     flex-flow: column;
   }
 `;

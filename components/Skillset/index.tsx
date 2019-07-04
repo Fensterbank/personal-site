@@ -11,7 +11,7 @@ export const Root = styled.div`
   width: 50%;
   position: relative;
 
-  @media (max-width: 500px) { 
+  @media (max-width: 750px) { 
     width: 100%;
   }
 `;
@@ -113,16 +113,10 @@ export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction
   }
 
   const calcCircle = (index: number): any => {
-    let cRadius, cIconSize, cAngleOffset;
-    if (mouseOver)
-      cRadius = radius.hovered, cIconSize = iconSize.hovered, cAngleOffset = 0;
-    else
-      cRadius = radius.default, cIconSize = iconSize.default, cAngleOffset = angleOffset;
-
-    const angle = index * ((2 * Math.PI) / skillArray.length) + (cAngleOffset * (direction === 'right' ? 1 : -1));
-    const x = Math.round(circleSize / 2 + cRadius * Math.cos(angle) - cIconSize / 2);
-    const y = Math.round(circleSize / 2 + cRadius * Math.sin(angle) - cIconSize / 2);
-    return { left: `${x}px`, top: `${y}px`, width: `${cIconSize}px`, height: `${cIconSize}px`, config: mouseOver ? config.gentle : config.molasses };
+    const angle = index * ((2 * Math.PI) / skillArray.length) + (angleOffset * (direction === 'right' ? 1 : -1));
+    const x = Math.round(circleSize / 2 + radius.default * Math.cos(angle) - iconSize.default / 2);
+    const y = Math.round(circleSize / 2 + radius.default * Math.sin(angle) - iconSize.default / 2);
+    return { left: `${x}px`, top: `${y}px`, width: `${iconSize.default}px`, height: `${iconSize.default}px`, config: config.molasses };
   }
 
   const calcRectangle = (index: number): any => {
@@ -134,7 +128,7 @@ export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction
     const x = ((dimensions!.width - rectWidth) / 2) + (iconSize.hovered / 2) + (index - (row * itemsPerRow)) * iconSize.hovered * 1.5;
     const y = (iconSize.hovered / 2) + row * (iconSize.hovered * 1.5);
 
-    return { left: `${x}px`, top: `${y}px`, width: `${iconSize.hovered}px`, height: `${iconSize.hovered}px`, config: mouseOver ? config.gentle : config.molasses };
+    return { left: `${x}px`, top: `${y}px`, width: `${iconSize.hovered}px`, height: `${iconSize.hovered}px`, config: config.gentle };
   }
 
   useLayoutEffect(() => calcRadius(), []);
