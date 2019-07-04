@@ -1,5 +1,4 @@
-import styled from "../../theme";
+import { FunctionComponent } from "react";
 
-export const Hidden = styled.div`
-  display: none !important;
-`;
+export const Hidden: FunctionComponent = (props) =>
+  <div className="hidden" style={{ display: 'none' }} {...props} />

@@ -87,7 +87,7 @@ export const SocialLinks = () => {
       </animated.div>
     )}
     <Hidden>
-      {links.map(item => <Link key={item.icon.iconName} target="_blank" href={item.href} title={item.title}>{item.title}</Link>)}
+      {links.map(item => <Link key={item.icon.iconName} target="_blank" href={item.href} title={item.title}><FontAwesomeIcon size="2x" icon={item.icon} alt={item.title} /></Link>)}
     </Hidden>
   </Root>
 }

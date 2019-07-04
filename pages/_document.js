@@ -28,6 +28,11 @@ export default class MyCustomDocument extends Document {
           <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
           {this.props.styleTags}
           <script type="text/javascript" dangerouslySetInnerHTML={{ __html: trackingScript }} />
+          <noscript>
+            <style type="text/css">
+              {`.hidden { display: inherit !important; }`}
+            </style>
+          </noscript>
         </Head>
         <body>
           <Main />
