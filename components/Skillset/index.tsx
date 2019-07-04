@@ -27,6 +27,11 @@ interface Size {
   hovered: number;
 };
 
+interface Dimensions {
+  width: number;
+  height: number;
+};
+
 export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction, speed }) => {
   const containerEl = useRef<HTMLDivElement>(null);
   const [skillArray] = useState(shuffle(children));
@@ -39,6 +44,7 @@ export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction
     default: defaultIconSize,
     hovered: bigIconSize,
   });
+  const [dimensions, setDimensions] = useState<Dimensions|null>(null);
   const [angleOffset, setAngleOffset] = useState(0);
   const [mouseOver, setMouseOver] = useState(false);
   const [showSkills, setShowSkills] = useState(false);
@@ -58,6 +64,7 @@ export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction
           hovered: Math.round(calcRadius),
         };
         setRadius(r);
+        setDimensions(dimensions);
       }
     }
   }
@@ -98,7 +105,14 @@ export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction
     };
   }, []);
 
-  const calcPosition = (index: number): any => {
+  const calcPositions = (index: number): any => {
+    if (mouseOver) 
+      return calcRectangle(index)
+    else
+      return calcCircle(index)
+  }
+
+  const calcCircle = (index: number): any => {
     let cRadius, cIconSize, cAngleOffset;
     if (mouseOver)
       cRadius = radius.hovered, cIconSize = iconSize.hovered, cAngleOffset = 0;
@@ -111,12 +125,24 @@ export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction
     return { left: `${x}px`, top: `${y}px`, width: `${cIconSize}px`, height: `${cIconSize}px`, config: mouseOver ? config.gentle : config.molasses };
   }
 
+  const calcRectangle = (index: number): any => {
+    const itemsPerRow = (skillArray.length === 12) ? 4 : 3;
+    const row = Math.floor(index / itemsPerRow);
+
+    const rectWidth = (iconSize.hovered / 2) + itemsPerRow * (iconSize.hovered * 1.5);
+
+    const x = ((dimensions!.width - rectWidth) / 2) + (iconSize.hovered / 2) + (index - (row * itemsPerRow)) * iconSize.hovered * 1.5;
+    const y = (iconSize.hovered / 2) + row * (iconSize.hovered * 1.5);
+
+    return { left: `${x}px`, top: `${y}px`, width: `${iconSize.hovered}px`, height: `${iconSize.hovered}px`, config: mouseOver ? config.gentle : config.molasses };
+  }
+
   useLayoutEffect(() => calcRadius(), []);
 
-  const [springs, set] = useSprings(skillArray.length, index => calcPosition(index));
+  const [springs, set] = useSprings(skillArray.length, index => calcPositions(index));
 
   // FIXME: Typing is not working properly
-  set((((index: number) => calcPosition(index)) as any));
+  set((((index: number) => calcPositions(index)) as any));
 
   return <Root onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} ref={containerEl} style={{ height: `${circleSize}px` }}>
     {showSkills && springs.map((props: CSSProperties, index: number) => {

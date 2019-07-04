@@ -81,10 +81,6 @@ const Index = () => {
           href: 'https://www.ruby-lang.org/de/',
         },
         {
-          title: 'Sass',
-          href: 'https://sass-lang.com/',
-        },
-        {
           title: 'TypeScript',
           href: 'https://www.typescriptlang.org/',
         },
@@ -121,6 +117,15 @@ const Index = () => {
         {
           title: 'Webpack',
           href: 'https://webpack.js.org/',
+        },
+        {
+          title: 'Linux',
+          href: 'https://www.linuxfoundation.org/',
+        },
+        {
+          title: 'Microsoft Windows',
+          image: 'microsoft-windows.svg',
+          href: 'https://www.microsoft.com/de-de/windows',
         },
       ]
       }</Skillset>
