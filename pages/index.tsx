@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { Skillset } from '../components/Skillset';
 import { SkillContainer } from '../components/SkillContainer';
+import { Box } from '../components/Box';
 
 declare global {
   interface Window { _paq: any; }
@@ -20,20 +21,22 @@ const Index = () => {
     <Head>
       <title>Frédéric Bolvin - IT & Entwicklung</title>
     </Head>
-    <p>
-      Mein Name ist <strong>Frédéric Bolvin</strong> und ich bin Softwareentwickler mit Schwerpunkt im Bereich der modernen Webentwicklung.
-    </p>
-    <p>
-      Ich lebe in Deutschland und arbeite als	<strong>IT Freelancer</strong> für Kunden in den verschiedensten Branchen.<br />
-      Derzeit spezialisiere ich mich auf die Entwicklung modernster Webanwendungen auf Basis von React und NodeJS.
-    </p>
-    <p>
-      Bei der Umsetzung von Projekten begleite ich meine Kunden vom ersten Prototyp bis zur fertigen Lösung.<br />
-      Dabei lege ich Wert auf den Einsatz von erprobten state-of-the-art Technologien, um mit möglichst wenig Aufwand möglichst moderne und nachhaltige Lösungen zu entwickeln.<br />
-      Benötigen Sie Unterstützung in Ihrem Projekt? Gerne können Sie mich <Link href="/impress"><a>unverbindlich kontaktieren</a></Link>.
-    </p>
+    <Box>
+      <p>
+        Mein Name ist <strong>Frédéric Bolvin</strong> und ich bin Softwareentwickler mit Schwerpunkt im Bereich der modernen Webentwicklung.
+      </p>
+      <p>
+        Ich lebe in Deutschland und arbeite als	<strong>IT Freelancer</strong> für Kunden in den verschiedensten Branchen.<br />
+        Derzeit spezialisiere ich mich auf die Entwicklung modernster Webanwendungen auf Basis von React und NodeJS.
+      </p>
+      <p>
+        Bei der Umsetzung von Projekten begleite ich meine Kunden vom ersten Prototyp bis zur fertigen Lösung.<br />
+        Dabei lege ich Wert auf den Einsatz von erprobten state-of-the-art Technologien, um mit möglichst wenig Aufwand möglichst moderne und nachhaltige Lösungen zu entwickeln.<br />
+        Benötigen Sie Unterstützung in Ihrem Projekt? Gerne können Sie mich <Link href="/impress"><a>unverbindlich kontaktieren</a></Link>.
+      </p>
+    </Box>
     <SkillContainer>
-      {<Skillset direction="right" speed={4}>{[
+      {<Skillset direction="right" speed={3}>{[
         {
           title: 'C#',
           image: 'csharp.svg',
@@ -86,7 +89,7 @@ const Index = () => {
         },
       ]
       }</Skillset>}
-      <Skillset direction="left" speed={6}>{[
+      <Skillset direction="left" speed={4}>{[
         {
           title: 'Git',
           href: 'https://git-scm.com/',

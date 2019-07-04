@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub, faXing, faStackOverflow } from '@fortawesome/free-brands-svg-icons';
 import { useTransition, animated, config } from 'react-spring';
 import { useState, useEffect } from 'react';
+import { ExternalLink } from '../ExternalLink';
 
 export const Root = styled.div`
   display: flex;
@@ -26,14 +27,6 @@ export const Root = styled.div`
 
   & > div:nth-child(4) {
     left: 9em;
-  }
-`;
-
-export const Link = styled.a`
-  color: #fff;
-
-  &:visited {
-    color: #fff;
   }
 `;
 
@@ -81,13 +74,13 @@ export const SocialLinks = () => {
   return <Root>
     {transitions.map(({ item, props, key }) =>
       <animated.div key={key} style={props}>
-        <Link key={item.icon.iconName} target="_blank" href={item.href} title={item.title} onClick={() => window._paq ? window._paq.push(['trackLink', item.href, 'link']) : null}>
+        <ExternalLink key={item.icon.iconName} href={item.href} title={item.title} >
           <FontAwesomeIcon size="2x" icon={item.icon} alt={item.title} />
-        </Link>
+        </ExternalLink>
       </animated.div>
     )}
     <Hidden>
-      {links.map(item => <Link key={item.icon.iconName} target="_blank" href={item.href} title={item.title}><FontAwesomeIcon size="2x" icon={item.icon} alt={item.title} /></Link>)}
+      {links.map(item => <ExternalLink key={item.icon.iconName} href={item.href} title={item.title}><FontAwesomeIcon size="2x" icon={item.icon} alt={item.title} /></ExternalLink>)}
     </Hidden>
   </Root>
 }
