@@ -81,7 +81,7 @@ export const SocialLinks = () => {
   return <Root>
     {transitions.map(({ item, props, key }) =>
       <animated.div key={key} style={props}>
-        <Link key={item.icon.iconName} target="_blank" href={item.href} title={item.title}>
+        <Link key={item.icon.iconName} target="_blank" href={item.href} title={item.title} onClick={() => window._paq ? window._paq.push(['trackLink', item.href, 'link']) : null}>
           <FontAwesomeIcon size="2x" icon={item.icon} alt={item.title} />
         </Link>
       </animated.div>

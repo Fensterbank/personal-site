@@ -22,4 +22,5 @@ interface iProps {
 };
 
 export const Skill: FunctionComponent<iProps> = ({ image, title, style, href }) =>
-  <Root style={style} target="_blank" href={href}><Icon src={image ? `/static/skills/${image}` : `/static/skills/${title.toLowerCase()}.svg`} title={title} /></Root>
+  <Root style={style} target="_blank" href={href} onClick={() => window._paq ? window._paq.push(['trackLink', href, 'link']) : null}><Icon src={image ? `/static/skills/${image}` : `/static/skills/${title.toLowerCase()}.svg`} title={title} /></Root>
+  
