@@ -85,7 +85,7 @@ export const Skillset: FunctionComponent<SkillsetProps> = ({ children, direction
      
     if (delta > interval) {
       then = now - (delta % interval);
-      setAngleOffset(angle => angle + speed / 1000);
+      setAngleOffset(angle => angle + speed / 2000);
     }
 
     frameID = window.requestAnimationFrame(tick);

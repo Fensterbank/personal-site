@@ -51,7 +51,7 @@ const links = [
   },
   {
     index: 3,
-    href: 'https://stackoverflow.com/users/story/1708477',
+    href: 'https://stackoverflow.com/story/frebo',
     icon: faStackOverflow,
     title: 'StackOverflow Developer Story',
   }
