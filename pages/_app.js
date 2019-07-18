@@ -13,6 +13,7 @@ const Page = styled.div`
   color: #a1a1a1;
   font-size: 1.1em;
   margin: 0 0 2em 0;
+  -webkit-overflow-scrolling: touch;
 
   @media (max-width: 400px) { 
     padding: 0 1em;
