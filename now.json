@@ -1,0 +1,8 @@
+{
+    "version": 2,
+    "name": "personal-site",
+    "builds": [
+        { "src": "package.json", "use": "@now/next" }
+    ],
+    "alias": ["bol.vin"]
+}
