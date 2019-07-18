@@ -1,10 +1,11 @@
 import styled from "../../theme";
 
 export const Box = styled.div`
-  color: #fbf4ec;
+  color: #fff;
   padding: 1em;
-  background: rgba(136, 136, 144, 0.2);
+  background: rgba(0, 0, 0, 0.28);
   border-radius: 12px;
+  line-height: 1.4;
 
   @media (max-width: 500px) { 
     padding: 0 1em;
