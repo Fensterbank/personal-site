@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styled from '../../theme';
 import { SocialLinks } from '../SocialLinks';
+import { ExternalLink } from '../ExternalLink';
 
 export const Root = styled.div`
   display: flex;
@@ -29,9 +30,9 @@ export const Footer = () => {
   return <Root>
     <SocialLinks />
     <LinkSection>
-      <span>© Frédéric Bolvin</span>
       <Link href="/impress"><a>Impressum</a></Link>
       <Link href="/privacy"><a>Datenschutz</a></Link>
+      <ExternalLink href="https://github.com/Fensterbank/personal-site">Source&nbsp;Code</ExternalLink>
     </LinkSection>
   </Root>
 }
