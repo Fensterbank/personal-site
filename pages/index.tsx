@@ -23,14 +23,15 @@ const Index = () => {
     </Head>
     <Box>
       <p>
-        Mein Name ist <strong>Frédéric Bolvin</strong> und ich bin Softwareentwickler mit Schwerpunkt im Bereich der modernen Webentwicklung.
+        Hallo!<br />
+        Ich bin Softwareentwickler mit Schwerpunkt im Bereich der modernen Webentwicklung.
       </p>
       <p>
         Ich lebe in Deutschland und arbeite als	<strong>IT Freelancer</strong> für Kunden in den verschiedensten Branchen.<br />
-        Derzeit spezialisiere ich mich auf die Entwicklung modernster Webanwendungen auf Basis von React und NodeJS.
+        Derzeit bevorzuge ich die Entwicklung modernster Webanwendungen auf Basis von React und NodeJS.
       </p>
       <p>
-        Bei der Umsetzung von Projekten begleite ich meine Kunden vom ersten Prototyp bis zur fertigen Lösung.<br />
+        Bei der Umsetzung von Projekten begleite ich Sie vom ersten Prototyp bis zur fertigen Lösung.<br />
         Dabei lege ich Wert auf den Einsatz von erprobten state-of-the-art Technologien, um mit möglichst wenig Aufwand möglichst moderne und nachhaltige Lösungen zu entwickeln.<br />
         Benötigen Sie Unterstützung in Ihrem Projekt? Gerne können Sie mich <Link href="/impress"><a>unverbindlich kontaktieren</a></Link>.
       </p>

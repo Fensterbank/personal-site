@@ -7,6 +7,10 @@ const Root = styled(animated.a)`
   justify-content: center;
   align-items: center;
   position: absolute;
+
+  @media (max-width: 750px) { 
+    cursor: default;
+  }
 `;
 
 const Icon = styled.img`
@@ -21,6 +25,17 @@ interface iProps {
   style: CSSProperties;
 };
 
-export const Skill: FunctionComponent<iProps> = ({ image, title, style, href }) =>
-  <Root style={style} target="_blank" href={href} onClick={() => window._paq ? window._paq.push(['trackLink', href, 'link']) : null}><Icon src={image ? `/static/skills/${image}` : `/static/skills/${title.toLowerCase()}.svg`} title={title} /></Root>
-  
+export const Skill: FunctionComponent<iProps> = ({ image, title, style, href }) => {
+  let url, onClick, target;
+  if (window && window.innerWidth <= 750) {
+    url = '#';
+    onClick = undefined;
+    target = undefined;
+  } else {
+    url = href;
+    onClick = window._paq ? () => window._paq.push(['trackLink', href, 'link']) : undefined;
+    target = '_blank';
+  }
+
+  return <Root style={style} target={target} href={url} onClick={onClick}><Icon src={image ? `/static/skills/${image}` : `/static/skills/${title.toLowerCase()}.svg`} title={title} /></Root>;
+};

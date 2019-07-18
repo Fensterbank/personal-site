@@ -67,12 +67,15 @@ const Privacy: FunctionComponent = () => {
 			aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
         <h3>Hinweis zur verantwortlichen Stelle</h3>
         <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
-        <p> Frédéric Bolvin
-			<br /> Öschweg 15
-			<br /> 72555 Metzingen</p>
-
-        <p>Telefon: 0176-24472011
-			<br /> E-Mail: frederic@bol.vin</p>
+        <p>
+          Frédéric Bolvin<br />
+          Öschweg 15<br />
+          72555 Metzingen
+        </p>
+        <p>
+          Telefon: 0176-24472011<br />
+          E-Mail: frederic@bol.vin
+        </p>
         <p>Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke
 			und Mittel der Verarbeitung von personenbezogenen Daten (z.B. Namen, E-Mail-Adressen o. Ä.) entscheidet.</p>
         <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>

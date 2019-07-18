@@ -9,6 +9,11 @@ export const Root = styled.div`
   height: 14rem;
   flex-shrink: 0;
 
+  @media (max-width: 500px) { 
+    height: auto;
+    padding-bottom: 1rem;
+  }
+
   & img {
     display: block;
     margin: 2em auto;
