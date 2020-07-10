@@ -57,6 +57,14 @@ body {
   color: #77b342;
 }
 
+.bg-fbit {
+  background-color: #77b342;
+}
+
+.bg-fbit.valid:hover {
+  background-color: #42b245;
+}
+
 h2 {
   font-size: 6rem;
   line-height: 1.2;
@@ -112,5 +120,34 @@ h2.smaller {
 
   & > div:nth-child(4) {
     left: 9em;
+  }
+}
+
+.contact-form {
+  .control {
+    border-bottom: 1px solid #77b342;
+  }
+
+  input.form-input {
+    background: transparent;
+    border: none;
+  }
+
+  textarea.form-input {
+    border: 1px solid #77b342;
+    background: transparent;
+    border-radius: 0;
+  }
+
+  input.form-input:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+  }
+
+  textarea.form-input:focus {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #77b342;
   }
 }

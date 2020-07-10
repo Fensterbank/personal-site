@@ -161,7 +161,6 @@ export const Skillset: FunctionComponent<SkillsetProps> = ({
     calcPositions(index),
   );
 
-  // FIXME: Typing is not working properly
   set(((index: number) => calcPositions(index)) as any);
 
   return (

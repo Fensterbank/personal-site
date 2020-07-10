@@ -18,8 +18,7 @@ const items = [
 ];
 
 interface MenuProps {
-  active?: string;
-  fpApi?: any;
+  activeSection: string;
 }
 
 const getHash = () =>
@@ -27,7 +26,7 @@ const getHash = () =>
     ? window.location.hash.replace('#', '')
     : 'home';
 
-export const Menu: FC<MenuProps> = () => {
+export const Menu: FC<MenuProps> = ({ activeSection }) => {
   const hash = getHash();
   const [active, setActive] = useState(null);
 
@@ -36,7 +35,9 @@ export const Menu: FC<MenuProps> = () => {
     if (active == null) setActive(hash);
   }, [hash]);
 
-  console.log('Render Menü, active:', active);
+  useEffect(() => {
+    setActive(activeSection);
+  }, [activeSection]);
 
   return (
     <div className="w-full">
@@ -49,7 +50,7 @@ export const Menu: FC<MenuProps> = () => {
             {
               'menu-item-active font-bold': active === i.anchor,
             },
-            'block menu-item w-full text-white text-right text-xl p-2',
+            'block menu-item w-full text-white text-right text-xl p-2 outline-none',
           )}
         >
           {i.title}

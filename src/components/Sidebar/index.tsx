@@ -1,6 +1,6 @@
 import { Menu } from '../Menu';
 
-export const Sidebar = () => {
+export const Sidebar = ({ activeSection }) => {
   return (
     <div className="sidebar h-full fixed top-0 left-0 flex flex-col justify-center">
       <div className="grid grid-cols-6 absolute top-0 left-0 w-full mt-12">
@@ -16,7 +16,7 @@ export const Sidebar = () => {
       </div>
       <div className="grid grid-cols-6">
         <div className="col-span-4">
-          <Menu active="Hello" />
+          <Menu activeSection={activeSection} />
         </div>
       </div>
     </div>

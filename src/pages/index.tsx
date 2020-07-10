@@ -1,7 +1,7 @@
 import ReactFullpage from '@fullpage/react-fullpage';
 import Head from 'next/head';
 // import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Home, What, How } from '@@/components/Sections';
 import Contact from '@@/components/Sections/contact';
@@ -17,6 +17,7 @@ declare global {
 }
 
 const Index = () => {
+  const [activeSection, setActiveSection] = useState('home');
   useEffect(() => {
     if (window._paq) {
       window._paq.push(['setDocumentTitle', document.title]);
@@ -24,24 +25,30 @@ const Index = () => {
     }
   });
 
+  const onSectionLeave = (origin, destination, direction) => {
+    console.log('onLeave', { origin, destination, direction });
+    setActiveSection(destination.anchor);
+  };
+
   return (
     <>
       <Head>
         <title>f-bit software</title>
       </Head>
       <ReactFullpage
+        onLeave={onSectionLeave}
         render={() => {
           return (
             <ReactFullpage.Wrapper>
-              <Home />
-              <What />
-              <How />
-              <Contact />
+              <Home active={activeSection === 'home'} />
+              <What active={activeSection === 'what'} />
+              <How active={activeSection === 'how'} />
+              <Contact active={activeSection === 'contact'} />
             </ReactFullpage.Wrapper>
           );
         }}
       />
-      <Sidebar />
+      <Sidebar activeSection={activeSection} />
       {/* <div className="grid grid-cols-24 relative z-10">
         <div className="col-span-4">
           <Menu active="Hello" />

@@ -53,6 +53,7 @@ module.exports = {
     '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'comma-dangle': [1, 'always-multiline'],
+    'jsx-a11y/label-has-associated-control': 'off',
     'no-shadow': 'off',
     /**
      * The following import rules are disabled as they are provided

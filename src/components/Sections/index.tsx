@@ -3,7 +3,7 @@ import How from './how';
 import What from './what';
 
 export interface SectionProps {
-  fpApi?: any;
+  active?: boolean;
 }
 
 export { Home, What, How };
