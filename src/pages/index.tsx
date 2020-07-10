@@ -25,8 +25,7 @@ const Index = () => {
     }
   });
 
-  const onSectionLeave = (origin, destination, direction) => {
-    console.log('onLeave', { origin, destination, direction });
+  const onSectionLeave = (origin, destination) => {
     setActiveSection(destination.anchor);
   };
 
@@ -36,6 +35,7 @@ const Index = () => {
         <title>f-bit software</title>
       </Head>
       <ReactFullpage
+        licenseKey="82B0922C-E2FF42E3-A770BCEC-A53EA21A"
         onLeave={onSectionLeave}
         render={() => {
           return (
