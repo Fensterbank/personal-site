@@ -1,5 +1,5 @@
 import './tailwind.scss';
-import 'pattern.css';
+import '../styles/style.scss';
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;

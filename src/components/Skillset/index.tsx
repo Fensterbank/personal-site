@@ -9,22 +9,12 @@ import {
 } from 'react';
 import { config, useSprings } from 'react-spring';
 
-import styled from '../../../theme';
 import { Skill } from '../Skill';
 
 const defaultRadius = 120;
 const defaultIconSize = 50;
 const bigRadius = defaultRadius * 1.1;
 const bigIconSize = defaultIconSize * 1.1;
-
-export const Root = styled.div`
-  width: 50%;
-  position: relative;
-
-  @media (max-width: 750px) {
-    width: 100%;
-  }
-`;
 
 interface SkillsetProps {
   children: any[];
@@ -175,7 +165,8 @@ export const Skillset: FunctionComponent<SkillsetProps> = ({
   set(((index: number) => calcPositions(index)) as any);
 
   return (
-    <Root
+    <div
+      className="relative flex-grow"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       ref={containerEl}
@@ -194,6 +185,6 @@ export const Skillset: FunctionComponent<SkillsetProps> = ({
             />
           );
         })}
-    </Root>
+    </div>
   );
 };

@@ -1,82 +1,42 @@
-import ReactFullpage from '@fullpage/react-fullpage';
-import Head from 'next/head';
-// import Link from 'next/link';
-import { useEffect } from 'react';
+import { FC } from 'react';
 
-import { Home, What, How } from '@@/components/Sections';
-import Contact from '@@/components/Sections/contact';
-import { Sidebar } from '@@/components/Sidebar';
+import { SectionProps } from '.';
+import { Skillset } from '../Skillset';
+import { VerticalGridLines } from '../VericalGridLines';
 
-// import { SkillContainer } from '../components/SkillContainer';
-// import { Skillset } from '../components/Skillset';
-
-declare global {
-  interface Window {
-    _paq: any;
-  }
-}
-
-const Index = () => {
-  useEffect(() => {
-    if (window._paq) {
-      window._paq.push(['setDocumentTitle', document.title]);
-      window._paq.push(['trackPageView']);
-    }
-  });
-
-  return (
-    <>
-      <Head>
-        <title>f-bit software</title>
-      </Head>
-      <ReactFullpage
-        render={() => {
-          return (
-            <ReactFullpage.Wrapper>
-              <Home />
-              <What />
-              <How />
-              <Contact />
-            </ReactFullpage.Wrapper>
-          );
-        }}
-      />
-      <Sidebar />
-      {/* <div className="grid grid-cols-24 relative z-10">
-        <div className="col-span-4">
-          <Menu active="Hello" />
-        </div>
-      </div> */}
-      {/* <div>
-        <p>
-          Hallo!
-          <br />
-          Ich bin Softwareentwickler mit Schwerpunkt im Bereich der modernen
-          Webentwicklung.
-        </p>
-        <p>
-          Ich lebe in Deutschland und arbeite als <strong>IT Freelancer</strong>{' '}
-          für Kunden in den verschiedensten Branchen.
-          <br />
-          Derzeit bevorzuge ich die Entwicklung modernster Webanwendungen auf
-          Basis von React und NodeJS.
-        </p>
-        <p>
+const How: FC<SectionProps> = () => (
+  <section
+    data-anchor="how"
+    className="section bg-no-repeat bg-cover bg-center section-how"
+  >
+    <VerticalGridLines />
+    <div className="grid grid-cols-24 relative z-10 mb-10">
+      <div className="col-span-6" />
+      <div className="col-span-12">
+        <h2 className="text-white text-green-fbit text-center smaller">
+          Technology matters.
+        </h2>
+      </div>
+      <div className="col-span-6" />
+      <div className="col-span-8" />
+      <div className="col-span-8">
+        <p className="text-white text-2xl text-center mb-8">
           Bei der Umsetzung von Projekten begleite ich Sie vom ersten Prototyp
-          bis zur fertigen Lösung.
-          <br />
-          Dabei lege ich Wert auf den Einsatz von erprobten state-of-the-art
-          Technologien, um mit möglichst wenig Aufwand möglichst moderne und
-          nachhaltige Lösungen zu entwickeln.
-          <br />
-          Benötigen Sie Unterstützung in Ihrem Projekt? Gerne können Sie mich{' '}
-          <Link href="/impress">
-            <a>unverbindlich kontaktieren</a>
-          </Link>
+          bis zur fertigen Lösung. Dabei lege ich Wert auf den Einsatz von
+          erprobten state-of-the-art Technologien, um mit wenig Aufwand
+          möglichst moderne und nachhaltige Lösungen zu entwickeln.
+        </p>
+        <p className="text-white text-2xl text-center mb-8">
+          Benötigen Sie Unterstützung in Ihrem Projekt? Gerne können Sie{' '}
+          <a className="font-bold underline" href="#contact">
+            mich unverbindlich kontaktieren
+          </a>
           .
         </p>
       </div>
-      <SkillContainer>
+      <div className="col-span-8" />
+      <div className="col-span-6" />
+      <div className="col-span-12 flex justify-between">
         <Skillset direction="right" speed={3}>
           {[
             {
@@ -175,9 +135,9 @@ const Index = () => {
             },
           ]}
         </Skillset>
-      </SkillContainer> */}
-    </>
-  );
-};
-
-export default Index;
+      </div>
+      <div className="col-span-6" />
+    </div>
+  </section>
+);
+export default How;

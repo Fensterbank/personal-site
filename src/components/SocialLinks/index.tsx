@@ -8,33 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
 import { useTransition, animated, config } from 'react-spring';
 
-import styled from '../../../theme';
 import { ExternalLink } from '../ExternalLink';
 import { Hidden } from '../Hidden';
-
-export const Root = styled.div`
-  display: flex;
-  justify-content: center;
-  position: relative;
-  height: 2em;
-  width: 11em;
-
-  & > div:nth-child(1) {
-    left: 0;
-  }
-
-  & > div:nth-child(2) {
-    left: 3em;
-  }
-
-  & > div:nth-child(3) {
-    left: 6em;
-  }
-
-  & > div:nth-child(4) {
-    left: 9em;
-  }
-`;
 
 const links = [
   {
@@ -78,7 +53,7 @@ export const SocialLinks = () => {
   }, [items]);
 
   return (
-    <Root>
+    <div className="social-links flex justify-center relative h-8 w-48 text-white">
       {transitions.map(({ item, props, key }) => (
         <animated.div key={key} style={props}>
           <ExternalLink key={item.icon.iconName} href={item.href}>
@@ -93,6 +68,6 @@ export const SocialLinks = () => {
           </ExternalLink>
         ))}
       </Hidden>
-    </Root>
+    </div>
   );
 };

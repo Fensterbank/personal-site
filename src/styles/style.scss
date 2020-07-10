@@ -1,0 +1,116 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Regular.woff2') format('woff2'),
+    url('/fonts/Montserrat-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Bold.woff2') format('woff2'),
+    url('/fonts/Montserrat-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-BoldItalic.woff2') format('woff2'),
+    url('/fonts/Montserrat-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Italic.woff2') format('woff2'),
+    url('/fonts/Montserrat-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+html,
+body {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+.section-home {
+  background-image: url('/img/keyboard-254582_1920.jpg');
+}
+
+.section-what {
+  background-image: url('/img/sergey-zolkin-_UeY8aTI6d0-unsplash.jpg');
+  background-color: #77b342;
+  background-blend-mode: multiply;
+}
+
+.section-how {
+  background-image: url('/img/nate-grant-QQ9LainS6tI-unsplash.jpg');
+}
+
+.section-contact {
+  background-image: url('/img/john-mark-smith-_S6eV1Uz5A8-unsplash.jpg');
+}
+
+.text-green-fbit {
+  color: #77b342;
+}
+
+h2 {
+  font-size: 6rem;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+h2.smaller {
+  font-size: 5rem;
+}
+
+.grid-lines {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.col-span-15 {
+  grid-column: span 15 / span 15;
+}
+
+.col-span-20 {
+  grid-column: span 20 / span 20;
+}
+
+.border-col {
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.menu-item-active {
+  border-bottom: 1px solid #77b342;
+}
+
+.sidebar {
+  width: 25%;
+}
+
+.social-links {
+  & > div:nth-child(1) {
+    left: 0;
+  }
+
+  & > div:nth-child(2) {
+    left: 3em;
+  }
+
+  & > div:nth-child(3) {
+    left: 6em;
+  }
+
+  & > div:nth-child(4) {
+    left: 9em;
+  }
+}

@@ -1,7 +1,6 @@
 import { FunctionComponent, CSSProperties } from 'react';
 import { animated } from 'react-spring';
-
-import styled from '../../../theme';
+import styled from 'styled-components';
 
 const Root = styled(animated.a)`
   display: flex;
@@ -50,11 +49,7 @@ export const Skill: FunctionComponent<iProps> = ({
   return (
     <Root style={style} target={target} href={url} onClick={onClick}>
       <Icon
-        src={
-          image
-            ? `/static/skills/${image}`
-            : `/static/skills/${title.toLowerCase()}.svg`
-        }
+        src={image ? `/skills/${image}` : `/skills/${title.toLowerCase()}.svg`}
         title={title}
       />
     </Root>
