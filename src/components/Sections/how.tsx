@@ -1,5 +1,7 @@
 import { FC, useState, useEffect } from 'react';
 
+import { TechSkills, CodeSkills } from '@@/constants';
+
 import { SectionProps } from '.';
 import { Skillset } from '../Skillset';
 import { VerticalGridLines } from '../VericalGridLines';
@@ -29,8 +31,8 @@ const How: FC<SectionProps> = ({ active }) => {
           </h2>
         </div>
         <div className="col-span-6" />
-        <div className="col-span-8" />
-        <div className="col-span-8">
+        <div className="col-span-7" />
+        <div className="col-span-10">
           <p className="text-white text-2xl text-center mb-8">
             Bei der Umsetzung von Projekten begleite ich Sie vom ersten Prototyp
             bis zur fertigen Lösung. Dabei lege ich Wert auf den Einsatz von
@@ -45,112 +47,19 @@ const How: FC<SectionProps> = ({ active }) => {
             .
           </p>
         </div>
-        <div className="col-span-8" />
-        <div className="col-span-6" />
+        <div className="col-span-7" />
+        <div className="col-span-7" />
         {showSkills && (
-          <div className="col-span-12 flex justify-between">
+          <div className="col-span-10 flex justify-between">
             <Skillset direction="right" speed={3}>
-              {[
-                {
-                  title: 'C#',
-                  image: 'csharp.svg',
-                  href: 'https://de.wikipedia.org/wiki/C-Sharp',
-                },
-                {
-                  title: 'CSS3',
-                  href:
-                    'https://de.wikipedia.org/wiki/Cascading_Style_Sheets#CSS3',
-                },
-                {
-                  title: 'HTML5',
-                  href: 'https://de.wikipedia.org/wiki/HTML5',
-                },
-                {
-                  title: 'JavaScript',
-                  href: 'https://developer.mozilla.org/de/docs/Web/JavaScript',
-                },
-                {
-                  title: 'NextJS',
-                  href: 'https://nextjs.org/',
-                },
-                {
-                  title: 'NodeJS',
-                  href: 'https://nodejs.org/',
-                },
-                {
-                  title: 'PHP',
-                  href: 'http://php.net/',
-                },
-                {
-                  title: 'Ruby on Rails',
-                  image: 'rails.svg',
-                  href: 'https://www.ruby-lang.org/de/',
-                },
-                {
-                  title: 'React',
-                  href: 'https://reactjs.org/',
-                },
-                {
-                  title: 'Redux',
-                  href: 'https://redux.js.org/',
-                },
-                {
-                  title: 'Ruby',
-                  href: 'https://www.ruby-lang.org/de/',
-                },
-                {
-                  title: 'TypeScript',
-                  href: 'https://www.typescriptlang.org/',
-                },
-              ]}
+              {TechSkills}
             </Skillset>
             <Skillset direction="left" speed={4}>
-              {[
-                {
-                  title: 'Git',
-                  href: 'https://git-scm.com/',
-                },
-                {
-                  title: 'MySQL',
-                  href: 'https://www.mysql.com/',
-                },
-                {
-                  title: 'NPM',
-                  href: 'https://www.npmjs.com/',
-                },
-                {
-                  title: 'Microsoft SharePoint',
-                  image: 'sharepoint.png',
-                  href: 'http://office.microsoft.com/de-de/sharepoint/',
-                },
-                {
-                  title: 'Microsoft SQL Server',
-                  image: 'sql-server.png',
-                  href: 'https://www.microsoft.com/de-de/sql-server/',
-                },
-                {
-                  title: 'VS Code',
-                  image: 'visual-studio-code.svg',
-                  href: 'https://visualstudio.microsoft.com/',
-                },
-                {
-                  title: 'Webpack',
-                  href: 'https://webpack.js.org/',
-                },
-                {
-                  title: 'Linux',
-                  href: 'https://www.linuxfoundation.org/',
-                },
-                {
-                  title: 'Microsoft Windows',
-                  image: 'microsoft-windows.svg',
-                  href: 'https://www.microsoft.com/de-de/windows',
-                },
-              ]}
+              {CodeSkills}
             </Skillset>
           </div>
         )}
-        <div className="col-span-6" />
+        <div className="col-span-7" />
       </div>
     </section>
   );

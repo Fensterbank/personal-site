@@ -11,11 +11,12 @@ const Home: FC<SectionProps> = () => (
     <VerticalGridLines />
     <div className="grid grid-cols-24 relative z-10">
       <div className="col-span-12" />
-      <div className="col-span-7 pl-2">
+      <div className="col-span-8 pl-2">
         <h2 className="text-green-fbit">Hallo.</h2>
-        <div className="text-white text-3xl text-justify">
-          Ich bin ein erfahrener Software&shy;entwickler mit Schwer&shy;punkt im
-          Bereich der modernen Webe&shy;ntwicklung.
+        <div className="text-white text-3xl">
+          Ich bin ein erfahrener Soft&shy;ware&shy;entwickler mit
+          Schwer&shy;punkt im Bereich der mo&shy;der&shy;nen
+          Webe&shy;ntwicklung.
         </div>
       </div>
     </div>

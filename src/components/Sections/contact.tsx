@@ -26,7 +26,7 @@ const Contact: FC<SectionProps> = ({ active }) => {
         <div className="col-span-7" />
         <div className="col-span-10">
           <h2 className="text-green-fbit">let’s talk</h2>
-          <div className="text-white text-3xl text-justify mb-6">
+          <div className="text-white text-3xl mb-6">
             Benötigen Sie Unterstützung? Gerne können Sie das Kontaktformular
             ausfüllen oder mich einfach auf einen der zahl&shy;reichen Wege
             un&shy;verbindlich kon&shy;tak&shy;tieren.

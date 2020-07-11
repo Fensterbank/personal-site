@@ -13,11 +13,11 @@ const What: FC<SectionProps> = () => (
       <div className="col-span-9" />
       <div className="col-span-8">
         <h2 className="text-white">Digitale Transformation</h2>
-        <div className="text-white text-2xl text-justify">
-          Wir schaffen webbasierte Unternehmens&shy;lösungen mit Mehwert. Von
+        <div className="text-white text-2xl">
+          Ich schaffe webbasierte Unternehmens&shy;lösungen mit Mehwert. Von
           Individual&shy;entwick&shy;lungen über
           Prozess&shy;automa&shy;tisierungen bis hin zu komplexen Plattformen -
-          wir sind Ihr zuverlässiger Ansprech&shy;partner.
+          ich bin Ihr zuverlässiger Ansprech&shy;partner.
         </div>
       </div>
     </div>
