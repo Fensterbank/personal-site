@@ -53,7 +53,7 @@ export const ContactForm = () => {
             onChange={formik.handleChange}
           />
         </div>
-        <div className="mt-4 relative h-36">
+        <div className="mt-4 relative h-18 md:h-30">
           <textarea
             id="message"
             className="form-input block w-full sm:text-sm sm:leading-5 text-white h-full"

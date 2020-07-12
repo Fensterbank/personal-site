@@ -10,10 +10,12 @@ const What: FC<SectionProps> = () => (
   >
     <VerticalGridLines />
     <div className="grid grid-cols-24 relative z-10">
-      <div className="col-span-9" />
-      <div className="col-span-8">
-        <h2 className="text-white">Digitale Transformation</h2>
-        <div className="text-white text-2xl">
+      <div className="hidden md:block col-span-9" />
+      <div className="col-span-24 px-4 md:col-span-11 lg:col-span-8 md:px-0">
+        <h2 className="text-white text-4xl md:text-5xl lg:text-6xl mb-6 font-bold">
+          Digitale Transformation
+        </h2>
+        <div className="text-white text-xl md:text-2xl">
           Ich schaffe webbasierte Unternehmens&shy;lösungen mit Mehwert. Von
           Individual&shy;entwick&shy;lungen über
           Prozess&shy;automa&shy;tisierungen bis hin zu komplexen Plattformen -

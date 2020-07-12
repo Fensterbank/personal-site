@@ -24,22 +24,22 @@ const How: FC<SectionProps> = ({ active }) => {
     >
       <VerticalGridLines />
       <div className="grid grid-cols-24 relative z-10 mb-10">
-        <div className="col-span-6" />
-        <div className="col-span-12">
-          <h2 className="text-white text-green-fbit text-center smaller">
+        <div className="hidden md:block col-span-6" />
+        <div className="col-span-24 px-4 md:col-span-12 lg:px-0">
+          <h2 className="text-green-fbit lg:text-center text-4xl md:text-6xl mb-6 font-bold">
             Technology matters.
           </h2>
         </div>
-        <div className="col-span-6" />
-        <div className="col-span-7" />
-        <div className="col-span-10">
-          <p className="text-white text-2xl text-center mb-8">
+        <div className="hidden md:block col-span-6" />
+        <div className="hidden md:block md:col-span-6 lg:col-span-7" />
+        <div className="col-span-24 px-4 md:col-span-12 lg:col-span-10 lg:px-0">
+          <p className="text-white text-lg md:text-2xl lg:text-center mb-4 md:mb-8">
             Bei der Umsetzung von Projekten begleite ich Sie vom ersten Prototyp
             bis zur fertigen Lösung. Dabei lege ich Wert auf den Einsatz von
             erprobten state-of-the-art Technologien, um mit wenig Aufwand
             möglichst moderne und nachhaltige Lösungen zu entwickeln.
           </p>
-          <p className="text-white text-2xl text-center mb-8">
+          <p className="text-white text-lg md:text-2xl lg:text-center mb-4 md:mb-8">
             Benötigen Sie Unterstützung in Ihrem Projekt? Gerne können Sie{' '}
             <a className="font-bold underline" href="#contact">
               mich unverbindlich kontaktieren
@@ -47,19 +47,21 @@ const How: FC<SectionProps> = ({ active }) => {
             .
           </p>
         </div>
-        <div className="col-span-7" />
-        <div className="col-span-7" />
-        {showSkills && (
-          <div className="col-span-10 flex justify-between">
-            <Skillset direction="right" speed={3}>
-              {TechSkills}
-            </Skillset>
-            <Skillset direction="left" speed={4}>
-              {CodeSkills}
-            </Skillset>
-          </div>
-        )}
-        <div className="col-span-7" />
+        <div className="hidden md:block md:col-span-6 lg:col-span-7" />
+        <div className="hidden md:block col-span-8 lg:col-span-6" />
+        <div className="col-span-24 md:col-span-8 lg:col-span-12 flex justify-between">
+          {showSkills && (
+            <>
+              <Skillset direction="right" speed={3}>
+                {TechSkills}
+              </Skillset>
+              <Skillset direction="left" speed={4}>
+                {CodeSkills}
+              </Skillset>
+            </>
+          )}
+        </div>
+        <div className="hidden md:block md:col-span-8 lg:col-span-6" />
       </div>
     </section>
   );

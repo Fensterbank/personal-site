@@ -65,15 +65,16 @@ body {
   background-color: #42b245;
 }
 
-h2 {
-  font-size: 6rem;
-  line-height: 1.2;
-  margin-bottom: 0.5em;
-  font-weight: bold;
+text-7xl {
+  font-size: 5rem;
 }
 
-h2.smaller {
-  font-size: 5rem;
+text-8xl {
+  font-size: 6rem;
+}
+
+h2 {
+  line-height: 1.2;
 }
 
 .grid-lines {
@@ -91,6 +92,10 @@ h2.smaller {
 
 .col-span-20 {
   grid-column: span 20 / span 20;
+}
+
+.col-span-24 {
+  grid-column: span 24 / span 24;
 }
 
 .border-col {

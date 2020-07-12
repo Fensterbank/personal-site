@@ -23,10 +23,12 @@ const Contact: FC<SectionProps> = ({ active }) => {
     >
       <VerticalGridLines />
       <div className="grid grid-cols-24 relative z-10">
-        <div className="col-span-7" />
-        <div className="col-span-10">
-          <h2 className="text-green-fbit">let’s talk</h2>
-          <div className="text-white text-3xl mb-6">
+        <div className="hidden md:block col-span-7" />
+        <div className="col-span-24 px-4 md:col-span-10 md:px-0">
+          <h2 className="text-green-fbit text-4xl md:text-6xl mb-6 font-bold">
+            let’s talk
+          </h2>
+          <div className="text-white text-lg md:text-2xl lg:text-3xl mb-6">
             Benötigen Sie Unterstützung? Gerne können Sie das Kontaktformular
             ausfüllen oder mich einfach auf einen der zahl&shy;reichen Wege
             un&shy;verbindlich kon&shy;tak&shy;tieren.
