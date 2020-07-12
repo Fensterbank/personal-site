@@ -48,8 +48,8 @@ const How: FC<SectionProps> = ({ active }) => {
           </p>
         </div>
         <div className="hidden md:block md:col-span-6 lg:col-span-7" />
-        <div className="hidden md:block col-span-8 lg:col-span-6" />
-        <div className="col-span-24 md:col-span-8 lg:col-span-12 flex justify-between">
+        <div className="hidden md:block col-span-6 lg:col-span-8" />
+        <div className="col-span-24 md:col-span-12 lg:col-span-8 flex justify-between">
           {showSkills && (
             <>
               <Skillset direction="right" speed={3}>
@@ -61,7 +61,7 @@ const How: FC<SectionProps> = ({ active }) => {
             </>
           )}
         </div>
-        <div className="hidden md:block md:col-span-8 lg:col-span-6" />
+        <div className="hidden md:block md:col-span-6 lg:col-span-8" />
       </div>
     </section>
   );

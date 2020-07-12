@@ -12,7 +12,7 @@ import { config, useSprings } from 'react-spring';
 import { Skill } from '../Skill';
 
 const defaultRadius = 100;
-const defaultIconSize = 30;
+const defaultIconSize = 40;
 const bigRadius = defaultRadius * 1.1;
 const bigIconSize = defaultIconSize * 1.1;
 

@@ -50,7 +50,7 @@ export const Menu: FC<MenuProps> = ({ activeSection }) => {
             {
               'menu-item-active font-bold': active === i.anchor,
             },
-            'block menu-item w-full text-white text-right text-xl p-2 outline-none',
+            'block menu-item w-full text-white text-right text-xl p-2 outline-none transition duration-500 ease-in-out',
           )}
         >
           {i.title}
