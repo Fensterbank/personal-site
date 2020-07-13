@@ -52,7 +52,7 @@ export const ContactForm = () => {
   const submitDisabled = !formik.isValid || submitting;
 
   return (
-    <div className="contact-form w-full mt-12">
+    <div className="contact-form w-full mt-2 md:mt-6">
       <form onSubmit={formik.handleSubmit}>
         <div className="control mt-4 relative">
           <input

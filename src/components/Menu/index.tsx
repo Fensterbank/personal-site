@@ -1,7 +1,13 @@
 import cslx from 'clsx';
+import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
 
-const items = [
+interface LinkItem {
+  anchor: string;
+  title: string;
+}
+
+const items: LinkItem[] = [
   {
     anchor: 'home',
     title: 'home',
@@ -18,7 +24,7 @@ const items = [
 ];
 
 interface MenuProps {
-  activeSection: string;
+  activeSection?: string;
 }
 
 const getHash = () =>
@@ -39,23 +45,32 @@ export const Menu: FC<MenuProps> = ({ activeSection }) => {
     setActive(activeSection);
   }, [activeSection]);
 
-  return (
-    <div className="w-full">
-      {items.map((i) => (
-        <a
-          onClick={() => setActive(i.anchor)}
-          key={i.anchor}
-          href={`#${i.anchor}`}
-          className={cslx(
-            {
-              'menu-item-active font-bold': active === i.anchor,
-            },
-            'block menu-item w-full text-white text-right text-xl p-2 outline-none transition duration-500 ease-in-out',
-          )}
-        >
-          {i.title}
-        </a>
-      ))}
-    </div>
-  );
+  const renderLink = (link: LinkItem) => {
+    if (!activeSection) {
+      return (
+        <Link key={link.anchor} href={`/#${link.anchor}`}>
+          <a className="block menu-item w-full text-white text-right text-xl p-2 outline-none transition duration-500 ease-in-out">
+            {link.title}
+          </a>
+        </Link>
+      );
+    }
+    return (
+      <a
+        onClick={() => setActive(link.anchor)}
+        key={link.anchor}
+        href={`#${link.anchor}`}
+        className={cslx(
+          {
+            'menu-item-active font-bold': active === link.anchor,
+          },
+          'block menu-item w-full text-white text-right text-xl p-2 outline-none transition duration-500 ease-in-out',
+        )}
+      >
+        {link.title}
+      </a>
+    );
+  };
+
+  return <div className="w-full">{items.map((i) => renderLink(i))}</div>;
 };
