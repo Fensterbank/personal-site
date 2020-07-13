@@ -1,15 +1,23 @@
+import axios from 'axios';
 import clsx from 'clsx';
 import { useFormik } from 'formik';
+import { useState } from 'react';
 import { object, string } from 'yup';
 
+import { ContactMessage } from '@@/lib/types';
+
 export const ContactForm = () => {
+  const [responseMessage, setResponseMessage] = useState<string | null>('');
+  const [error, setError] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       company: '',
       name: '',
       mail: '',
       message: '',
-    },
+    } as ContactMessage,
     validationSchema: object({
       company: string().notRequired(),
       name: string().required(),
@@ -18,10 +26,30 @@ export const ContactForm = () => {
     }),
     validateOnMount: true,
     onSubmit: (values) => {
-      // TODO: Implement form submitting
-      console.log('Submit', values);
+      setSubmitting(true);
+      axios
+        .post('/api/contact', {
+          company: values.company,
+          name: values.name,
+          mail: values.mail,
+          message: values.message,
+        })
+        .then((response) => {
+          setError(false);
+          formik.resetForm();
+          setResponseMessage(response.data.message);
+        })
+        .catch((error) => {
+          setError(true);
+          if (error.response.data.message)
+            setResponseMessage(error.response.data.message);
+          else setResponseMessage('Ein unbekannter Fehler ist aufgetreten.');
+        })
+        .finally(() => setSubmitting(false));
     },
   });
+
+  const submitDisabled = !formik.isValid || submitting;
 
   return (
     <div className="contact-form w-full mt-12">
@@ -68,14 +96,23 @@ export const ContactForm = () => {
             className={clsx(
               'py-2 px-4 w-full border border-transparent font-bold text-white bg-fbit transition duration-150 ease-in-out',
               {
-                'opacity-50 cursor-not-allowed': !formik.isValid,
-                'valid focus:outline-none': formik.isValid,
+                'opacity-50 cursor-not-allowed': submitDisabled,
+                'valid focus:outline-none': !submitDisabled,
               },
             )}
-            disabled={!formik.isValid}
+            disabled={submitDisabled}
           >
             Formular absenden
           </button>
+          {responseMessage && (
+            <p
+              className={`mt-2 text-sm ${
+                error ? 'text-red-600' : 'text-green-fbit'
+              }`}
+            >
+              {responseMessage}
+            </p>
+          )}
         </div>
       </form>
     </div>

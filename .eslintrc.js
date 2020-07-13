@@ -42,6 +42,7 @@ module.exports = {
     'react/jsx-curly-newline': 'off',
     'prettier/prettier': 'warn',
     'react/no-danger': 'off',
+    'no-console': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
