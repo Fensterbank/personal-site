@@ -1,13 +1,14 @@
 import { FC } from 'react';
 
 import { SectionProps } from '.';
+import { ExternalLink } from '../ExternalLink';
 import { Footer } from '../Footer';
 import { VerticalGridLines } from '../VericalGridLines';
 
 const Impress: FC<SectionProps> = () => (
   <section
     data-anchor="home"
-    className="section bg-gray-900 bg-no-repeat bg-cover bg-center section-impress-privacy h-full w-full"
+    className="section bg-no-repeat bg-cover bg-center section-impress-privacy h-full w-full"
   >
     <VerticalGridLines />
     <div className="flex h-full w-full flex-col">
@@ -28,7 +29,6 @@ const Impress: FC<SectionProps> = () => (
               72555 Metzingen
               <br />
             </p>
-
             <p className="mb-6">
               <b>Mail:</b>{' '}
               <a href="mailto:fred@f-bit.software">fred@f-bit.software</a>
@@ -41,8 +41,44 @@ const Impress: FC<SectionProps> = () => (
               Für den Inhalt der verlinkten Seiten sind ausschließlich deren
               Betreiber verantwortlich.
             </p>
-
             <h3 className="font-bold">Bildnachweise:</h3>
+            <p className="pl-2">
+              <span className="font-bold">what I do:</span> Foto von{' '}
+              <ExternalLink
+                className="underline"
+                href="https://unsplash.com/photos/_UeY8aTI6d0"
+              >
+                Sergey Zolkin
+              </ExternalLink>
+            </p>
+            <p className="pl-2">
+              <span className="font-bold">how I do it:</span> Foto von{' '}
+              <ExternalLink
+                className="underline"
+                href="https://unsplash.com/photos/QQ9LainS6tI"
+              >
+                Nate Grant
+              </ExternalLink>
+            </p>
+            <p className="pl-2">
+              <span className="font-bold">let’s talk:</span> Foto von{' '}
+              <ExternalLink
+                className="underline"
+                href="https://unsplash.com/photos/_S6eV1Uz5A8"
+              >
+                John-Mark Smith
+              </ExternalLink>
+            </p>
+            <p className="pl-2">
+              <span className="font-bold">impressum / datenschutz:</span> Foto
+              von{' '}
+              <ExternalLink
+                className="underline"
+                href="https://unsplash.com/photos/Q1p7bh3SHj8"
+              >
+                NASA
+              </ExternalLink>
+            </p>
           </div>
         </div>
       </div>
