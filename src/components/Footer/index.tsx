@@ -2,6 +2,8 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { FC } from 'react';
 
+import { ExternalLink } from '../ExternalLink';
+
 interface FooterProps {
   fixed?: boolean;
 }
@@ -27,13 +29,9 @@ export const Footer: FC<FooterProps> = ({ fixed }) => (
       </Link>
     </div>
     <div className="hidden md:flex col-span-24 md:col-span-6 justify-center items-center">
-      <a
-        href="https://github.com/Fensterbank/personal-site"
-        target="_blank"
-        rel="noreferrer"
-      >
+      <ExternalLink href="https://github.com/Fensterbank/personal-site">
         source code
-      </a>
+      </ExternalLink>
     </div>
   </div>
 );

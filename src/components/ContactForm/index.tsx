@@ -4,12 +4,14 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import { object, string } from 'yup';
 
+import { useMatomo } from '@@/hooks';
 import { ContactMessage } from '@@/lib/types';
 
 export const ContactForm = () => {
   const [responseMessage, setResponseMessage] = useState<string | null>('');
   const [error, setError] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const matomo = useMatomo();
 
   const formik = useFormik({
     initialValues: {
@@ -38,12 +40,14 @@ export const ContactForm = () => {
           setError(false);
           formik.resetForm();
           setResponseMessage(response.data.message);
+          matomo.trackEvent('contact', 'sent');
         })
         .catch((error) => {
           setError(true);
           if (error.response.data.message)
             setResponseMessage(error.response.data.message);
           else setResponseMessage('Ein unbekannter Fehler ist aufgetreten.');
+          matomo.trackEvent('contact', 'error');
         })
         .finally(() => setSubmitting(false));
     },

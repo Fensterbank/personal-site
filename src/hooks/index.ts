@@ -23,11 +23,24 @@ export const useWindowSize = () => {
 };
 
 export const useMatomo = (title?: string) => {
+  const paq = isClient() ? window._paq : undefined;
+
   const trackPage = (title: string) => {
-    if (isClient() && window._paq && title) {
-      window._paq.push(['setDocumentTitle', title]);
-      window._paq.push(['trackPageView']);
+    if (title) console.log('[useMatomo] WOULD TRACK', title);
+    if (paq && title) {
+      paq.push(['setDocumentTitle', title]);
+      paq.push(['trackPageView']);
     }
+  };
+
+  const trackLink = (href: string) => {
+    if (paq) paq.push(['trackLink', href, 'link']);
+    else console.log('[useMatomo] WOULD TRACK LINK TO', href);
+  };
+
+  const trackEvent = (category: string, action: string) => {
+    if (paq) paq.push(['trackEvent', category, action]);
+    else console.log('[useMatomo] WOULD TRACK EVENT', category, action);
   };
 
   useEffect(() => {
@@ -36,5 +49,7 @@ export const useMatomo = (title?: string) => {
 
   return {
     trackPage,
+    trackLink,
+    trackEvent,
   };
 };

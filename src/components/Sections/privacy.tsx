@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import { SectionProps } from '.';
+import { ExternalLink } from '../ExternalLink';
 import { Footer } from '../Footer';
 import { VerticalGridLines } from '../VericalGridLines';
 
@@ -167,13 +168,12 @@ const Privacy: FC<SectionProps> = () => (
               Datenschutzbeauftragten sowie deren Kontaktdaten können folgendem
               Link entnommen werden:
               <br />
-              <a
+              <ExternalLink
+                className="underline"
                 href="https://www.bfdi.bund.de/SharedDocs/Adressen/LfD/BadenWuerttemberg.html"
-                target="_blank"
-                rel="noreferrer"
               >
                 Landesdatenschutzbeauftragte Baden-Württemberg
-              </a>
+              </ExternalLink>
             </p>
             <h3 className="mb-2 font-bold text-lg">
               Recht auf Datenübertragbarkeit
