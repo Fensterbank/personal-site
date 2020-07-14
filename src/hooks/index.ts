@@ -6,10 +6,11 @@ export const useMatomo = (title?: string) => {
   const paq = isClient() ? window._paq : undefined;
 
   const trackPage = (title: string) => {
-    if (title) console.log('[useMatomo] WOULD TRACK', title);
     if (paq && title) {
       paq.push(['setDocumentTitle', title]);
       paq.push(['trackPageView']);
+    } else if (title) {
+      console.log('[useMatomo] WOULD TRACK', title);
     }
   };
 
