@@ -26,8 +26,8 @@ export default class MyDocument extends Document {
     return (
       <Html lang="de">
         <Head>
-          <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/favicon.png" />
+          <link rel="apple-touch-icon" href="/favicon.png" />
           <script
             type="text/javascript"
             dangerouslySetInnerHTML={{ __html: trackingScript }}
