@@ -1,21 +1,17 @@
 import Head from 'next/head';
-import { FunctionComponent, useEffect } from 'react';
+import { FunctionComponent } from 'react';
 
 import Privacy from '@@/components/Sections/privacy';
 import { Sidebar } from '@@/components/Sidebar';
+import { useMatomo } from '@@/hooks';
 
 const PrivacyPage: FunctionComponent = () => {
-  useEffect(() => {
-    if (window._paq) {
-      window._paq.push(['setDocumentTitle', document.title]);
-      window._paq.push(['trackPageView']);
-    }
-  });
+  useMatomo('f-bit software | datenschutzerklärung');
 
   return (
     <>
       <Head>
-        <title>Datenschutzerklärung | Frédéric Bolvin - IT & Entwicklung</title>
+        <title>f-bit software | datenschutzerklärung</title>
       </Head>
       <Privacy />
       <Sidebar />

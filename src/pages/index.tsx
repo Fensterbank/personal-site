@@ -1,14 +1,12 @@
 import ReactFullpage from '@fullpage/react-fullpage';
 import Head from 'next/head';
-// import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Home, What, How } from '@@/components/Sections';
 import Contact from '@@/components/Sections/contact';
 import { Sidebar } from '@@/components/Sidebar';
-
-// import { SkillContainer } from '../components/SkillContainer';
-// import { Skillset } from '../components/Skillset';
+import { useMatomo } from '@@/hooks';
+import { isClient } from '@@/lib';
 
 declare global {
   interface Window {
@@ -18,15 +16,34 @@ declare global {
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
-  useEffect(() => {
-    if (window._paq) {
-      window._paq.push(['setDocumentTitle', document.title]);
-      window._paq.push(['trackPageView']);
-    }
-  });
+  const matomo = useMatomo(
+    isClient() &&
+      window.location.hash.length > 0 &&
+      window.location.hash !== '#home'
+      ? undefined
+      : 'f-bit software | home',
+  );
 
   const onSectionLeave = (origin, destination) => {
     setActiveSection(destination.anchor);
+    let title;
+    switch (destination.anchor) {
+      case 'home':
+        title = 'f-bit software | home';
+        break;
+      case 'what':
+        title = 'f-bit software | what I do';
+        break;
+      case 'how':
+        title = 'f-bit software | how I do it';
+        break;
+      case 'contact':
+        title = 'f-bit software | let’s talk';
+        break;
+      default:
+        title = 'f-bit software';
+    }
+    matomo.trackPage(title);
   };
 
   return (

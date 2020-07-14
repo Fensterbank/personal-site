@@ -26,7 +26,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="de">
         <Head>
-          {/* PWA primary color */}
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
           <link rel="icon" href="/favicon.ico" />
           <script

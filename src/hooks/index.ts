@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+import { isClient } from '@@/lib';
+
 const getSize = () => ({
   innerHeight: window.innerHeight,
   innerWidth: window.innerWidth,
@@ -18,4 +20,21 @@ export const useWindowSize = () => {
   }, []);
 
   return windowSize;
+};
+
+export const useMatomo = (title?: string) => {
+  const trackPage = (title: string) => {
+    if (isClient() && window._paq && title) {
+      window._paq.push(['setDocumentTitle', title]);
+      window._paq.push(['trackPageView']);
+    }
+  };
+
+  useEffect(() => {
+    if (title) trackPage(title);
+  }, []);
+
+  return {
+    trackPage,
+  };
 };

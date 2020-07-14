@@ -1,21 +1,17 @@
 import Head from 'next/head';
-import { FunctionComponent, useEffect } from 'react';
+import { FunctionComponent } from 'react';
 
 import Impress from '@@/components/Sections/impress';
 import { Sidebar } from '@@/components/Sidebar';
+import { useMatomo } from '@@/hooks';
 
 const ImpressPage: FunctionComponent = () => {
-  useEffect(() => {
-    if (window._paq) {
-      window._paq.push(['setDocumentTitle', document.title]);
-      window._paq.push(['trackPageView']);
-    }
-  });
+  useMatomo('f-bit software | impressum');
 
   return (
     <>
       <Head>
-        <title>f-bit software | Impressum</title>
+        <title>f-bit software | impressum</title>
       </Head>
       <Impress />
       <Sidebar />
