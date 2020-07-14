@@ -1,9 +1,20 @@
 {
-  "presets": [
-    "next/babel",
-    "@zeit/next-typescript/babel"
-  ],
-  "plugins": [
-    ["styled-components", { "ssr": true, "displayName": true, "preprocess": false } ]
-  ]
+  "presets": ["next/babel"],
+    "plugins": [
+      ["macros"],
+      [
+        "module-resolver",
+        {
+          "root": ["."],
+          "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"],
+          "alias": {
+            "@@": "./src",
+            "@@components": "./src/components",
+            "@@pages": "./src/pages",
+            "@@utils": "./src/utils",
+            "@@lib": "./src/lib"
+          }
+        }
+      ]
+    ]
 }
