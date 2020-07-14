@@ -16,9 +16,9 @@ const What: FC<SectionProps> = () => (
           Digitale Transformation
         </h2>
         <div className="text-white text-xl md:text-2xl">
-          Ich schaffe webbasierte Unternehmens&shy;lösungen mit Mehwert. Von
+          Ich schaffe webbasierte Unternehmens&shy;lösungen mit Mehrwert. Von
           Individual&shy;entwick&shy;lungen über
-          Prozess&shy;automa&shy;tisierungen bis hin zu komplexen Plattformen -
+          Prozess&shy;automa&shy;tisierungen bis hin zu komplexen Plattformen –
           ich bin Ihr zuverlässiger Ansprech&shy;partner.
         </div>
       </div>
