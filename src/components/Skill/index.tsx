@@ -20,7 +20,7 @@ export const Skill: FunctionComponent<iProps> = ({
 
   return (
     <animated.div className="absolute" style={style}>
-      <ExternalLink className="flex justify-center items-center" href={href}>
+      <ExternalLink href={href}>
         <img
           alt={title}
           className="skill"
