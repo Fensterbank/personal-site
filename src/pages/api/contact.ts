@@ -31,12 +31,14 @@ export default async (req, res) => {
         Es wurde eine Nachricht über das Kontaktformular von f-bit.software gesendet.\n\n
         Firma: ${message.company}\n
         Name: ${message.name}\n
+        E-Mail: ${message.mail}\n
         Nachricht:\n
         ${message.message}`,
         html: `
         Es wurde eine Nachricht über das Kontaktformular von f-bit.software gesendet.<br><br>
         <b>Firma:</b> ${message.company}<br>
         <b>Name:</b> ${message.name}<br>
+        <b>E-Mail:</b> ${message.mail}<br>
         <b>Nachricht:</b><br>
         ${message.message.replace(/\n/g, '<br>')}`,
       });
