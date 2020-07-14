@@ -1,42 +1,10 @@
-import {
-  faLinkedin,
-  faGithub,
-  faXing,
-  faStackOverflow,
-} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
 import { useTransition, animated, config } from 'react-spring';
 
-import { ExternalLink } from '../ExternalLink';
-import { Hidden } from '../Hidden';
+import { Links } from '@@/constants';
 
-const links = [
-  {
-    index: 0,
-    href: 'https://www.linkedin.com/in/fre-bo',
-    icon: faLinkedin,
-    title: 'LinkedIn',
-  },
-  {
-    index: 1,
-    href: 'https://www.xing.com/profile/Frederic_Bolvin',
-    icon: faXing,
-    title: 'XING',
-  },
-  {
-    index: 2,
-    href: 'https://github.com/Fensterbank',
-    icon: faGithub,
-    title: 'Github',
-  },
-  {
-    index: 3,
-    href: 'https://stackoverflow.com/story/frebo',
-    icon: faStackOverflow,
-    title: 'StackOverflow Developer Story',
-  },
-];
+import { ExternalLink } from '../ExternalLink';
 
 export const SocialLinks = () => {
   const [items, setItems] = useState([]);
@@ -48,8 +16,8 @@ export const SocialLinks = () => {
   });
 
   useEffect(() => {
-    if (items.length !== links.length)
-      window.setTimeout(() => setItems([...items, links[items.length]]), 300);
+    if (items.length !== Links.length)
+      window.setTimeout(() => setItems([...items, Links[items.length]]), 300);
   }, [items]);
 
   return (
@@ -61,13 +29,6 @@ export const SocialLinks = () => {
           </ExternalLink>
         </animated.div>
       ))}
-      <Hidden>
-        {links.map((item) => (
-          <ExternalLink key={item.icon.iconName} href={item.href}>
-            <FontAwesomeIcon size="2x" icon={item.icon} />
-          </ExternalLink>
-        ))}
-      </Hidden>
     </div>
   );
 };

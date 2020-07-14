@@ -7,7 +7,7 @@ import { VerticalGridLines } from '../VericalGridLines';
 const Impress: FC<SectionProps> = () => (
   <section
     data-anchor="home"
-    className="section bg-no-repeat bg-cover bg-center section-impress-privacy h-full w-full"
+    className="section bg-gray-900 bg-no-repeat bg-cover bg-center section-impress-privacy h-full w-full"
   >
     <VerticalGridLines />
     <div className="flex h-full w-full flex-col">

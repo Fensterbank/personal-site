@@ -3,6 +3,7 @@ import { FC, useState, useEffect } from 'react';
 import { TechSkills, CodeSkills } from '@@/constants';
 
 import { SectionProps } from '.';
+import { HiddenLinkList } from '../HiddenLinkList';
 import { Skillset } from '../Skillset';
 import { VerticalGridLines } from '../VericalGridLines';
 
@@ -20,7 +21,7 @@ const How: FC<SectionProps> = ({ active }) => {
   return (
     <section
       data-anchor="how"
-      className="section bg-no-repeat bg-cover bg-center section-how"
+      className="section bg-gray-900 bg-no-repeat bg-cover bg-center section-how"
     >
       <VerticalGridLines />
       <div className="grid grid-cols-24 relative z-10 mb-10">
@@ -60,6 +61,8 @@ const How: FC<SectionProps> = ({ active }) => {
               </Skillset>
             </>
           )}
+          <HiddenLinkList collection={TechSkills} />
+          <HiddenLinkList collection={CodeSkills} />
         </div>
         <div className="hidden md:block md:col-span-6 lg:col-span-8" />
       </div>

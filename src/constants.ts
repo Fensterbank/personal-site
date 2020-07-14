@@ -1,3 +1,10 @@
+import {
+  faLinkedin,
+  faGithub,
+  faXing,
+  faStackOverflow,
+} from '@fortawesome/free-brands-svg-icons';
+
 export const CodeSkills = [
   {
     title: 'C#',
@@ -91,5 +98,32 @@ export const TechSkills = [
     title: 'Microsoft Windows',
     image: 'microsoft-windows.svg',
     href: 'https://www.microsoft.com/de-de/windows',
+  },
+];
+
+export const Links = [
+  {
+    index: 0,
+    href: 'https://www.linkedin.com/in/fre-bo',
+    icon: faLinkedin,
+    title: 'LinkedIn',
+  },
+  {
+    index: 1,
+    href: 'https://www.xing.com/profile/Frederic_Bolvin',
+    icon: faXing,
+    title: 'XING',
+  },
+  {
+    index: 2,
+    href: 'https://github.com/Fensterbank',
+    icon: faGithub,
+    title: 'Github',
+  },
+  {
+    index: 3,
+    href: 'https://stackoverflow.com/story/frebo',
+    icon: faStackOverflow,
+    title: 'StackOverflow Developer Story',
   },
 ];

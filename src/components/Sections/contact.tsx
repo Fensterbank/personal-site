@@ -1,8 +1,11 @@
 import { FC, useState, useEffect } from 'react';
 
+import { Links } from '@@/constants';
+
 import { SectionProps } from '.';
 import { ContactForm } from '../ContactForm';
 import { Footer } from '../Footer';
+import { HiddenLinkList } from '../HiddenLinkList';
 import { SocialLinks } from '../SocialLinks';
 import { VerticalGridLines } from '../VericalGridLines';
 
@@ -20,7 +23,7 @@ const Contact: FC<SectionProps> = ({ active }) => {
   return (
     <section
       data-anchor="contact"
-      className="section bg-no-repeat bg-cover bg-center section-contact"
+      className="section bg-gray-900 bg-no-repeat bg-cover bg-center section-contact"
     >
       <VerticalGridLines />
       <div className="flex h-full w-full flex-col">
@@ -36,6 +39,7 @@ const Contact: FC<SectionProps> = ({ active }) => {
               un&shy;verbindlich kon&shy;tak&shy;tieren.
             </div>
             {showSocialLinks ? <SocialLinks /> : <div className="h-8" />}
+            <HiddenLinkList collection={Links} />
             <ContactForm />
           </div>
         </div>
