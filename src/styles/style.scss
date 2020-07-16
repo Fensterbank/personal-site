@@ -178,3 +178,16 @@ h2 {
   height: 90%;
   max-width: 90%;
 }
+
+.fp-tableCell {
+  max-height: 100vh;
+} // just to make sure nothing glitches over the section
+
+/**
+ * fixed logo dimensions by assigning a max-width.
+ * otherwise it may look strange on tablets or smartphones in landscape
+ */
+#logo img {
+  max-width: 160px;
+  margin: 0 auto;
+}

@@ -34,7 +34,7 @@ const How: FC<SectionProps> = ({ active }) => {
         <div className="hidden md:block col-span-6" />
         <div className="hidden md:block md:col-span-6 lg:col-span-7" />
         <div className="col-span-24 px-4 md:col-span-12 lg:col-span-10 lg:px-0">
-          <p className="text-white text-lg md:text-2xl lg:text-xl lg:text-center xxl:text-2xl mb-4 md:mb-8">
+          <p className="text-white text-lg md:text-2xl lg:text-lg xxl:text-2xl lg:text-center mb-4 md:mb-8">
             Bei der Umsetzung von Projekten begleite ich Sie vom ersten Prototyp
             bis zur fertigen Lösung. Dabei lege ich Wert auf den Einsatz von
             erprobten state-of-the-art Technologien, um mit wenig Aufwand

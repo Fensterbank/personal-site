@@ -11,7 +11,7 @@ const What: FC<SectionProps> = () => (
     <VerticalGridLines />
     <div className="grid grid-cols-24 relative z-10">
       <div className="hidden md:block col-span-9" />
-      <div className="col-span-24 px-4 md:col-span-11 lg:col-span-8 md:px-0">
+      <div className="col-span-24 px-4 md:col-span-11 lg:col-span-10 xl:col-span-9 md:px-0">
         <h2 className="text-white text-4xl md:text-5xl lg:text-6xl mb-6 font-bold">
           Digitale Transformation
         </h2>

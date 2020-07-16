@@ -11,7 +11,7 @@ interface FooterProps {
 export const Footer: FC<FooterProps> = ({ fixed }) => (
   <div
     className={clsx(
-      'grid grid-cols-24 z-30 bg-gray-800 bg-opacity-50 text-white h-16 md:h-18 lg:h-20 text-lg',
+      'grid grid-cols-24 z-30 bg-gray-800 bg-opacity-50 text-white h-16 md:h-18 lg:h-15 xxl:h-20 text-lg',
       {
         'absolute w-full bottom-0 left-0': fixed,
       },
