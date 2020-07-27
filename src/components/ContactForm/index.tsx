@@ -67,7 +67,7 @@ export const ContactForm = () => {
             onChange={formik.handleChange}
           />
         </div>
-        <div className="control mt-4 relative">
+        <div className="control mt-2 relative">
           <input
             id="name"
             className="form-input block w-full sm:text-sm sm:leading-5 text-white"
@@ -76,7 +76,7 @@ export const ContactForm = () => {
             onChange={formik.handleChange}
           />
         </div>
-        <div className="control mt-4 relative">
+        <div className="control mt-2 relative">
           <input
             id="mail"
             className="form-input block w-full sm:text-sm sm:leading-5 text-white"
@@ -85,7 +85,7 @@ export const ContactForm = () => {
             onChange={formik.handleChange}
           />
         </div>
-        <div className="mt-4 relative h-18 md:h-30">
+        <div className="mt-4 relative h-12 md:h-30">
           <textarea
             id="message"
             className="form-input block w-full sm:text-sm sm:leading-5 text-white h-full"
