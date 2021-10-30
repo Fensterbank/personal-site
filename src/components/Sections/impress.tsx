@@ -35,6 +35,9 @@ const Impress: FC<SectionProps> = () => (
               <br />
               <b>Mobil:</b> 0176-24472011
             </p>
+            <p className="mb-6">
+              <b>USt-IdNr:</b> DE293604965
+            </p>
             <h3 className="font-bold">Haftungshinweis:</h3>
             <p className="mb-6">
               Der Betreiber übernimmt keine Haftung für Inhalte externer Links.
