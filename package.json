@@ -24,7 +24,7 @@
     "@fortawesome/pro-solid-svg-icons": "./vendor/fortawesome-pro-solid-svg-icons-5.15.4.tgz",
     "@fortawesome/react-fontawesome": "^0.1.9",
     "@fullpage/react-fullpage": "^0.1.19",
-    "axios": "^0.19.2",
+    "axios": "^0.21.2",
     "clsx": "^1.1.1",
     "dotenv": "^8.2.0",
     "dotenv-cli": "^3.1.0",
