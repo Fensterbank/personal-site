@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import React from 'react';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -25,37 +24,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="de">
         <Head>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-            key="viewport"
-          />
-          <meta
-            name="description"
-            content="Softwareentwickler im Bereich der modernen Webentwicklung. Ihr zuverlässiger Ansprechpartner für webbasierte Unternehmenslösungen mit Mehrwert."
-          />
-          <meta
-            name="keywords"
-            content="freelancer, entwickler, software, freiberufler"
-          />
-          <meta property="og:image" content="/img/f-bit_logo.png" />
-          <meta property="og:type" content="website" />
-          <meta property="og:site_name" content="f-bit software" />
-          <meta
-            property="og:description"
-            content="Erfahrener Softwareentwickler im Bereich der modernen Webentwicklung. Ihr zuverlässiger Ansprechpartner für webbasierte Unternehmenslösungen mit Mehrwert."
-          />
-          <meta name="twitter:card" content="summary" />
-          <meta
-            name="twitter:title"
-            content="f-bit software | Frédéric Bolvin IT-Softwareentwicklung"
-          />
-          <meta
-            name="twitter:description"
-            content="Erfahrener Softwareentwickler im Bereich der modernen Webentwicklung. Ihr zuverlässiger Ansprechpartner für webbasierte Unternehmenslösungen mit Mehrwert."
-          />
-          <meta property="twitter:image" content="/img/f-bit_logo.png" />
-
           <link rel="icon" href="/favicon.png" />
           <link rel="apple-touch-icon" href="/favicon.png" />
           <script

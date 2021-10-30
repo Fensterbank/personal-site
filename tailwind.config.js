@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable global-require */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
@@ -23,6 +19,6 @@ module.exports = {
       xxl: '1500px',
     },
   },
-  plugins: [require('@tailwindcss/ui')],
+  plugins: [],
   purge: ['./src/**/*.jsx', './src/**/*.tsx'],
 };

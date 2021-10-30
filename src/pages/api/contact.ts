@@ -3,7 +3,7 @@ import { createTransport } from 'nodemailer';
 import { config } from '@@/config';
 import { ContactMessage } from '@@/lib/types';
 
-export default async (req, res) => {
+const contacts = async (req, res) => {
   if (req.method === 'POST') {
     const message: ContactMessage = {
       name: req.body.name || '',
@@ -43,7 +43,7 @@ export default async (req, res) => {
         ${message.message.replace(/\n/g, '<br>')}`,
       });
 
-      console.log(`Contact message sent: ${info.messageId as string}`);
+      console.log(`Contact message sent: ${info.messageId}`);
 
       res.statusCode = 201;
       res.json({ message: 'Nachricht gesendet.' });
@@ -61,3 +61,5 @@ export default async (req, res) => {
     res.statusCode = 404;
   }
 };
+
+export default contacts;

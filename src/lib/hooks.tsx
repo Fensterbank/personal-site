@@ -16,7 +16,7 @@ export const useDebounce = (value, delay) => {
 };
 
 export const useTimeout = (callback: () => void, timeout = 0): (() => void) => {
-  const timeoutIdRef = useRef<NodeJS.Timeout>();
+  const timeoutIdRef = useRef<any>();
   const cancel = useCallback(() => {
     const timeoutId = timeoutIdRef.current;
     if (timeoutId) {

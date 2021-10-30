@@ -151,14 +151,12 @@ h2 {
   }
 
   input.form-input {
-    background: transparent;
-    border: none;
+    @apply px-3 py-2 bg-transparent border-none;
   }
 
   textarea.form-input {
     border: 1px solid #77b342;
-    background: transparent;
-    border-radius: 0;
+    @apply px-3 py-2 bg-transparent;
   }
 
   input.form-input:focus {
