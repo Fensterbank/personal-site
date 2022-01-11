@@ -12,7 +12,7 @@ const contacts = async (req, res) => {
       message: req.body.message || '',
     };
 
-    console.log(`Sending message via ${config.smtp.host} from ${message.mail}`);
+    console.log(`Sending message via »${config.smtp.host}« from »${message.mail}«…`);
 
     const transporter = createTransport({
       host: config.smtp.host,
