@@ -11,24 +11,26 @@ interface FooterProps {
 export const Footer: FC<FooterProps> = ({ fixed }) => (
   <div
     className={clsx(
-      'grid grid-cols-24 z-30 bg-gray-800 bg-opacity-50 text-white h-16 md:h-18 lg:h-15 xxl:h-20 text-lg',
+      'grid z-30 h-16 text-lg text-white bg-gray-800 bg-opacity-50 grid-cols-24 md:h-18 lg:h-15 xxl:h-20',
       {
-        'absolute w-full bottom-0 left-0': fixed,
+        'absolute bottom-0 left-0 w-full': fixed,
       },
     )}
   >
-    <div className="hidden md:block md:col-span-6" />
-    <div className="col-span-24 md:col-span-6 flex justify-center items-center">
+    <div className="flex justify-center items-center col-span-24 md:col-span-6">
+        <ExternalLink href="https://blog.f-bit.software" keepReferrer>blog</ExternalLink>
+    </div>
+    <div className="flex justify-center items-center col-span-24 md:col-span-6">
       <Link href="/impress">
         <a>impressum</a>
       </Link>
     </div>
-    <div className="col-span-24 md:col-span-6 flex justify-center items-center">
+    <div className="flex justify-center items-center col-span-24 md:col-span-6">
       <Link href="/privacy">
         <a>datenschutz</a>
       </Link>
     </div>
-    <div className="hidden md:flex col-span-24 md:col-span-6 justify-center items-center">
+    <div className="hidden justify-center items-center md:flex col-span-24 md:col-span-6">
       <ExternalLink href="https://github.com/Fensterbank/personal-site">
         source code
       </ExternalLink>

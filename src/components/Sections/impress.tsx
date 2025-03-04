@@ -8,14 +8,14 @@ import { VerticalGridLines } from '../VericalGridLines';
 const Impress: FC<SectionProps> = () => (
   <section
     data-anchor="home"
-    className="section bg-no-repeat bg-cover bg-center section-impress-privacy h-full w-full"
+    className="w-full h-full bg-center bg-no-repeat bg-cover section section-impress-privacy"
   >
     <VerticalGridLines />
-    <div className="flex h-full w-full flex-col">
-      <div className="grid grid-cols-24 relative z-10 flex-grow">
-        <div className="hidden md:block col-span-8" />
-        <div className="col-span-24 px-4 md:col-span-12 lg:col-span-8 md:px-0 md:pl-2 flex flex-col justify-center">
-          <h2 className="text-green-fbit text-5xl md:text-6xl mb-6 font-bold">
+    <div className="flex flex-col w-full h-full">
+      <div className="grid relative z-10 flex-grow grid-cols-24">
+        <div className="hidden col-span-8 md:block" />
+        <div className="flex flex-col justify-center px-4 col-span-24 md:col-span-12 lg:col-span-8 md:px-0 md:pl-2">
+          <h2 className="mb-6 text-5xl font-bold text-green-fbit md:text-6xl">
             Impressum
           </h2>
           <div className="text-white text-md md:text-lg">
@@ -24,7 +24,7 @@ const Impress: FC<SectionProps> = () => (
               <br />
               Frédéric Bolvin IT Softwareentwicklung
               <br />
-              Öschweg 15
+              Florianstraße 20
               <br />
               72555 Metzingen
               <br />

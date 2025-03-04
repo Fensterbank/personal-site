@@ -9,15 +9,17 @@ interface ExternalLinkProps {
   children?: any;
   href: string;
   style?: any;
+  keepReferrer?: boolean;
 }
 
 export const ExternalLink: FunctionComponent<ExternalLinkProps> = (props) => {
+  const { keepReferrer = false, ...restProps } = props;
   const matomo = useMatomo();
   return (
     <a
-      {...props}
+      {...restProps}
       target="_blank"
-      rel="noreferrer"
+      rel={keepReferrer ? "noopener" : "noopener noreferrer"}
       onClick={() => matomo.trackLink(props.href)}
     >
       {props.children || props.href}
