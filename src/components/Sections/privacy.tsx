@@ -1,10 +1,9 @@
-/* eslint-disable react/no-unescaped-entities */
-import { FC } from 'react';
+import { FC } from 'react'
 
-import { SectionProps } from '.';
-import { ExternalLink } from '../ExternalLink';
-import { Footer } from '../Footer';
-import { VerticalGridLines } from '../VericalGridLines';
+import { SectionProps } from '.'
+import { ExternalLink } from '../ExternalLink'
+import { Footer } from '../Footer'
+import { VerticalGridLines } from '../VerticalGridLines'
 
 const Privacy: FC<SectionProps> = () => (
   <section
@@ -196,8 +195,8 @@ const Privacy: FC<SectionProps> = () => (
               oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine
               SSL-bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung
               erkennen Sie daran, dass die Adresszeile des Browsers von
-              “http://” auf “https://” wechselt und an dem Schloss-Symbol in
-              Ihrer Browserzeile.
+              &quot;http://&quot; auf &quot;https://&quot; wechselt und an dem
+              Schloss-Symbol in Ihrer Browserzeile.
             </p>
             <p className="mb-6 text-md">
               Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die
@@ -245,64 +244,11 @@ const Privacy: FC<SectionProps> = () => (
               Optimierung seiner Webseite – hierzu müssen die Server-Log-Files
               erfasst werden.
             </p>
-            <h2 className="mb-4 text-xl font-bold">
-              4. Analyse Tools und Werbung
-            </h2>
-            <h3 className="mb-2 text-lg font-bold">Matomo (ehemals Piwik)</h3>
-            <p className="mb-6 text-md">
-              Diese Website benutzt den Open Source Webanalysedienst Matomo.
-              Matomo verwendet so genannte "Cookies". Das sind Textdateien, die
-              auf Ihrem Computer gespeichert werden und die eine Analyse der
-              Benutzung der Website durch Sie ermöglichen. Dazu werden die durch
-              den Cookie erzeugten Informationen über die Benutzung dieser
-              Website auf unserem Server gespeichert. Die IP-Adresse wird vor
-              der Speicherung anonymisiert.
-            </p>
-            <p className="mb-6 text-md">
-              Matomo-Cookies verbleiben auf Ihrem Endgerät, bis Sie sie löschen.
-            </p>
-            <p className="mb-6 text-md">
-              Die Speicherung von Matomo-Cookies erfolgt auf Grundlage von Art.
-              6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes
-              Interesse an der anonymisierten Analyse des Nutzerverhaltens, um
-              sowohl sein Webangebot als auch seine Werbung zu optimieren.
-            </p>
-            <p className="mb-6 text-md">
-              Die durch den Cookie erzeugten Informationen über die Benutzung
-              dieser Website werden nicht an Dritte weitergegeben. Sie können
-              die Speicherung der Cookies durch eine entsprechende Einstellung
-              Ihrer Browser-Software verhindern; wir weisen Sie jedoch darauf
-              hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche
-              Funktionen dieser Website vollumfänglich werden nutzen können.
-            </p>
-            <p className="mb-6 text-md">
-              Wenn Sie mit der Speicherung und Nutzung Ihrer Daten nicht
-              einverstanden sind, können Sie die Speicherung und Nutzung hier
-              deaktivieren. In diesem Fall wird in Ihrem Browser ein
-              Opt-Out-Cookie hinterlegt, der verhindert, dass Matomo
-              Nutzungsdaten speichert. Wenn Sie Ihre Cookies löschen, hat dies
-              zur Folge, dass auch das Matomo Opt-Out-Cookie gelöscht wird. Das
-              Opt-Out muss bei einem erneuten Besuch unserer Seite wieder
-              aktiviert werden.
-            </p>
-            <p className="mb-6 text-md">
-              <em>
-                <iframe
-                  title="Opt Out from Analytics"
-                  style={{
-                    border: 0,
-                    width: '100%',
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                  }}
-                  src="https://analytics.bol.vin/index.php?module=CoreAdminHome&action=optOut&language=de&backgroundColor=&fontColor=a1a1a1&fontSize=0.8em&fontFamily='Work Sans', sans-serif"
-                />
-              </em>
-            </p>
           </div>
         </div>
       </div>
       <Footer fixed />
     </div>
   </section>
-);
-export default Privacy;
+)
+export default Privacy

@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 
-export const useDebounce = (value, delay) => {
+export const useDebounce = (value: unknown, delay: number) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -16,14 +16,14 @@ export const useDebounce = (value, delay) => {
 };
 
 export const useTimeout = (callback: () => void, timeout = 0): (() => void) => {
-  const timeoutIdRef = useRef<any>();
+  const timeoutIdRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const cancel = useCallback(() => {
     const timeoutId = timeoutIdRef.current;
     if (timeoutId) {
       timeoutIdRef.current = undefined;
       clearTimeout(timeoutId);
     }
-  }, [timeoutIdRef]);
+  }, []);
 
   useEffect(() => {
     timeoutIdRef.current = setTimeout(callback, timeout);

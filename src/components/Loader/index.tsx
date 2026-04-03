@@ -1,6 +1,12 @@
-import { useEffect, useState } from 'react';
+'use client';
 
-export const Loader = ({ visible }) => {
+import { useEffect, useState, FC } from 'react';
+
+interface LoaderProps {
+  visible: boolean;
+}
+
+export const Loader: FC<LoaderProps> = ({ visible }) => {
   const [removed, setRemoved] = useState(false);
 
   useEffect(() => {

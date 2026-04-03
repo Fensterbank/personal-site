@@ -1,23 +1,11 @@
-import { FC, useState, useEffect } from 'react';
+'use client'
 
-import { TechSkills, CodeSkills } from '@@/constants';
+import { FC } from 'react'
 
-import { SectionProps } from '.';
-import { HiddenLinkList } from '../HiddenLinkList';
-import { Skillset } from '../Skillset';
-import { VerticalGridLines } from '../VericalGridLines';
+import { SectionProps } from '.'
+import { VerticalGridLines } from '../VerticalGridLines'
 
-const How: FC<SectionProps> = ({ active }) => {
-  const [showSkills, setShowSkills] = useState(active);
-
-  useEffect(() => {
-    if (active) {
-      setShowSkills(true);
-    } else if (!active && showSkills) {
-      window.setTimeout(() => setShowSkills(false), 500);
-    }
-  }, [active]);
-
+const How: FC<SectionProps> = () => {
   return (
     <section
       data-anchor="how"
@@ -42,7 +30,10 @@ const How: FC<SectionProps> = ({ active }) => {
           </p>
           <p className="text-white text-lg md:text-2xl lg:text-xl lg:text-center xxl:text-2xl mb-4 md:mb-8">
             Benötigen Sie Unterstützung in Ihrem Projekt? Gerne können Sie{' '}
-            <a className="font-bold underline" href="#contact">
+            <a className="font-bold underline cursor-pointer" onClick={(e) => {
+              e.preventDefault();
+              document.querySelector('[data-anchor="contact"]')?.scrollIntoView({ behavior: 'smooth' });
+            }} href="#contact">
               mich unverbindlich kontaktieren
             </a>
             .
@@ -50,23 +41,10 @@ const How: FC<SectionProps> = ({ active }) => {
         </div>
         <div className="hidden md:block md:col-span-6 lg:col-span-7" />
         <div className="hidden md:block col-span-6 lg:col-span-8" />
-        <div className="hidden xs:flex col-span-24 md:col-span-12 lg:col-span-8 justify-between">
-          {showSkills && (
-            <>
-              <Skillset direction="right" speed={3}>
-                {TechSkills}
-              </Skillset>
-              <Skillset direction="left" speed={4}>
-                {CodeSkills}
-              </Skillset>
-            </>
-          )}
-          <HiddenLinkList collection={TechSkills} />
-          <HiddenLinkList collection={CodeSkills} />
-        </div>
+        <div className="hidden xs:flex col-span-24 md:col-span-12 lg:col-span-8 justify-between"></div>
         <div className="hidden md:block md:col-span-6 lg:col-span-8" />
       </div>
     </section>
-  );
-};
-export default How;
+  )
+}
+export default How

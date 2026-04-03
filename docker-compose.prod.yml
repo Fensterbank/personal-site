@@ -1,0 +1,11 @@
+services:
+  fbit-software:
+    image: ghcr.io/fensterbank/fbit-software:latest
+    container_name: fbit-software
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3026:3000"
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production

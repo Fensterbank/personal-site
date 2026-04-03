@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import { SectionProps } from '.';
-import { ExternalLink } from '../ExternalLink';
-import { Footer } from '../Footer';
-import { VerticalGridLines } from '../VericalGridLines';
+import { SectionProps } from '.'
+import { ExternalLink } from '../ExternalLink'
+import { Footer } from '../Footer'
+import { VerticalGridLines } from '../VerticalGridLines'
 
 const Impress: FC<SectionProps> = () => (
   <section
@@ -64,7 +64,7 @@ const Impress: FC<SectionProps> = () => (
               </ExternalLink>
             </p>
             <p className="pl-2">
-              <span className="font-bold">let’s talk:</span> Foto von{' '}
+              <span className="font-bold">let&apos;s talk:</span> Foto von{' '}
               <ExternalLink
                 className="underline"
                 href="https://unsplash.com/photos/_S6eV1Uz5A8"
@@ -88,5 +88,5 @@ const Impress: FC<SectionProps> = () => (
       <Footer />
     </div>
   </section>
-);
-export default Impress;
+)
+export default Impress

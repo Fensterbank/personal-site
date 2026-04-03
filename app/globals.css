@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+@source "../src";
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Regular.woff2') format('woff2'),
+    url('/fonts/Montserrat-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Bold.woff2') format('woff2'),
+    url('/fonts/Montserrat-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-BoldItalic.woff2') format('woff2'),
+    url('/fonts/Montserrat-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Italic.woff2') format('woff2'),
+    url('/fonts/Montserrat-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@theme {
+  --color-green-fbit: #77b342;
+  --breakpoint-xs: 450px;
+  --breakpoint-xxl: 1500px;
+  --spacing-15: 3.75rem;
+  --spacing-18: 4.5rem;
+  --spacing-30: 7.5rem;
+}
+
+@utility grid-cols-24 {
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+}
+
+@utility col-span-6 {
+  grid-column: span 6 / span 6;
+}
+
+@utility col-span-7 {
+  grid-column: span 7 / span 7;
+}
+
+@utility col-span-8 {
+  grid-column: span 8 / span 8;
+}
+
+@utility col-span-9 {
+  grid-column: span 9 / span 9;
+}
+
+@utility col-span-10 {
+  grid-column: span 10 / span 10;
+}
+
+@utility col-span-11 {
+  grid-column: span 11 / span 11;
+}
+
+@utility col-span-12 {
+  grid-column: span 12 / span 12;
+}
+
+@utility col-span-15 {
+  grid-column: span 15 / span 15;
+}
+
+@utility col-span-20 {
+  grid-column: span 20 / span 20;
+}
+
+@utility col-span-24 {
+  grid-column: span 24 / span 24;
+}
+
+html,
+body {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 100%;
+}
+
+.fullpage-container {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.section {
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.section-home {
+  background-image: url('/img/keyboard-254582_1920.jpg');
+}
+
+.section-what {
+  background-image: url('/img/sergey-zolkin-_UeY8aTI6d0-unsplash.jpg');
+  background-color: #77b342;
+  background-blend-mode: multiply;
+}
+
+.section-how {
+  background-image: url('/img/nate-grant-QQ9LainS6tI-unsplash.jpg');
+}
+
+.section-contact {
+  background-image: url('/img/john-mark-smith-_S6eV1Uz5A8-unsplash.jpg');
+}
+
+.section-impress-privacy {
+  background-image: url('/img/nasa-Q1p7bh3SHj8-unsplash.jpg');
+  background-color: #77b342;
+  background-blend-mode: multiply;
+}
+
+
+.text-green-fbit {
+  color: #77b342;
+}
+
+.bg-fbit {
+  background-color: #77b342;
+}
+
+.bg-fbit.valid:hover {
+  background-color: #42b245;
+}
+
+h2 {
+  line-height: 1.2;
+}
+
+.grid-lines {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+
+.border-col {
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.menu-item {
+  border-bottom: 1px solid transparent;
+}
+
+.menu-item-active {
+  border-bottom: 1px solid #77b342;
+}
+
+.sidebar {
+  width: 25%;
+}
+
+.social-links {
+  & > div:nth-child(1) {
+    left: 0;
+  }
+
+  & > div:nth-child(2) {
+    left: 3em;
+  }
+
+  & > div:nth-child(3) {
+    left: 6em;
+  }
+
+  & > div:nth-child(4) {
+    left: 9em;
+  }
+}
+
+.contact-form {
+  .control {
+    border-bottom: 1px solid #77b342;
+  }
+
+  input.form-input {
+    @apply px-3 py-2 bg-transparent border-none;
+  }
+
+  textarea.form-input {
+    border: 1px solid #77b342;
+    @apply px-3 py-2 bg-transparent;
+  }
+
+  input.form-input:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+  }
+
+  textarea.form-input:focus {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #77b342;
+  }
+}
+
+.skill {
+  height: 90%;
+  max-width: 90%;
+}
+
+
+#logo img {
+  max-width: 160px;
+  margin: 0 auto;
+}

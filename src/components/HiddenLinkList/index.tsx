@@ -4,13 +4,9 @@ import { ExternalLink } from '../ExternalLink';
 import { Hidden } from '../Hidden';
 
 interface HiddenLinkListProps {
-  collection: any[];
+  collection: Array<{ title: string; href: string }>;
 }
 
-/**
- * Creates a hidden unordered list of external links which is visible for text based browsers
- * and search engines but invisible in graphical UI, since it's rendered otherwise
- */
 export const HiddenLinkList: FC<HiddenLinkListProps> = ({ collection }) => (
   <Hidden>
     <ul>

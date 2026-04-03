@@ -1,10 +1,16 @@
-import cslx from 'clsx';
+/* eslint-disable react-hooks/set-state-in-effect */
+'use client';
+
+import clsx from 'clsx';
 import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
+import { ExternalLink } from '../ExternalLink';
 
 interface LinkItem {
-  anchor: string;
+  href?: string;
+  anchor?: string;
   title: string;
+  keepReferrer?: boolean;
 }
 
 const items: LinkItem[] = [
@@ -20,7 +26,8 @@ const items: LinkItem[] = [
     anchor: 'how',
     title: 'how I do it',
   },
-  { anchor: 'contact', title: 'let’s talk' },
+  { anchor: 'contact', title: "let's talk" },
+  { href: 'https://blog.f-bit.software', title: 'blog', keepReferrer: true }
 ];
 
 interface MenuProps {
@@ -34,33 +41,55 @@ const getHash = () =>
 
 export const Menu: FC<MenuProps> = ({ activeSection }) => {
   const hash = getHash();
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
-    // set initial active after first render
     if (active == null) setActive(hash);
-  }, [hash]);
+  }, [hash, active]);
 
   useEffect(() => {
-    setActive(activeSection);
+    if (activeSection) setActive(activeSection);
   }, [activeSection]);
 
   const renderLink = (link: LinkItem) => {
     if (!activeSection) {
       return (
-        <Link key={link.anchor} href={`/#${link.anchor}`}>
-          <a className="block menu-item w-full text-white text-right text-xl p-2 outline-none transition duration-500 ease-in-out">
-            {link.title}
-          </a>
+        <Link 
+          key={link.anchor} 
+          href={`/#${link.anchor}`}
+          className="block p-2 w-full text-xl text-right text-white transition duration-500 ease-in-out outline-none menu-item"
+          data-umami-event={link.title}
+        >
+          {link.title}
         </Link>
+      );
+    }
+    if (link.href) {
+      return (
+        <ExternalLink
+          key={link.href}
+          href={link.href}
+          keepReferrer={link.keepReferrer}
+          className="block p-2 w-full text-xl text-right text-white transition duration-500 ease-in-out outline-none menu-item"
+          data-umami-event={link.title}
+        >
+          {link.title}
+        </ExternalLink>
       );
     }
     return (
       <a
-        onClick={() => setActive(link.anchor)}
+        onClick={(e) => {
+          e.preventDefault();
+          setActive(link.anchor || null);
+          const target = document.querySelector(`[data-anchor="${link.anchor}"]`);
+          target?.scrollIntoView({ behavior: 'smooth' });
+          history.replaceState(null, '', `#${link.anchor}`);
+        }}
         key={link.anchor}
         href={`#${link.anchor}`}
-        className={cslx(
+        data-umami-event={link.title}
+        className={clsx(
           {
             'menu-item-active font-bold': active === link.anchor,
           },

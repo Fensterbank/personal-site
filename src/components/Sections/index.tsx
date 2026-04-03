@@ -1,9 +1,9 @@
-import Home from './home';
-import How from './how';
-import What from './what';
+import Home from './home'
+import How from './how'
+import What from './what'
 
 export interface SectionProps {
-  active?: boolean;
+  active?: boolean
 }
 
-export { Home, What, How };
+export { Home, What, How }

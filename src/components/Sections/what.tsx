@@ -1,7 +1,7 @@
-import { FC } from 'react';
+import { FC } from 'react'
 
-import { SectionProps } from '.';
-import { VerticalGridLines } from '../VericalGridLines';
+import { SectionProps } from '.'
+import { VerticalGridLines } from '../VerticalGridLines'
 
 const What: FC<SectionProps> = () => (
   <section
@@ -24,5 +24,5 @@ const What: FC<SectionProps> = () => (
       </div>
     </div>
   </section>
-);
-export default What;
+)
+export default What

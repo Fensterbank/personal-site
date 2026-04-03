@@ -1,25 +1,26 @@
-import { createContext, useState, useMemo, useContext } from 'react';
+'use client';
 
-const PageContext = createContext(null);
+import { createContext, useState, useMemo, useContext, ReactNode } from 'react';
 
-function useInitialization() {
+const PageContext = createContext<[boolean, React.Dispatch<React.SetStateAction<boolean>>] | null>(null);
+
+function useInitialization(): [boolean, React.Dispatch<React.SetStateAction<boolean>>] {
   const context = useContext(PageContext);
   if (!context)
     throw new Error(
       `useInitialization must be used within a PageContextProvider`,
     );
 
-  const [state, setState] = context;
-
-  return [state, setState];
+  return context;
 }
 
-function PageContextProvider({ children }) {
+function PageContextProvider({ children }: { children: ReactNode }) {
   const [initialized, setInitialized] = useState<boolean>(false);
 
-  const initializedValue = useMemo(() => [initialized, setInitialized], [
-    initialized,
-  ]);
+  const initializedValue = useMemo<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>(
+    () => [initialized, setInitialized],
+    [initialized]
+  );
 
   return (
     <PageContext.Provider value={initializedValue}>

@@ -1,5 +1,11 @@
-import { FunctionComponent } from 'react';
+import { FC, ReactNode } from 'react';
 
-export const Hidden: FunctionComponent = (props) => (
-  <div className="hidden-for-script" style={{ display: 'none' }} {...props} />
+interface HiddenProps {
+  children: ReactNode;
+}
+
+export const Hidden: FC<HiddenProps> = ({ children }) => (
+  <div className="hidden-for-script" style={{ display: 'none' }}>
+    {children}
+  </div>
 );

@@ -1,28 +1,22 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-import { FunctionComponent } from 'react';
-
-import { useMatomo } from '@@/hooks';
+import { FC, ReactNode } from 'react';
 
 interface ExternalLinkProps {
   className?: string;
-  children?: any;
+  children?: ReactNode;
   href: string;
-  style?: any;
+  style?: React.CSSProperties;
   keepReferrer?: boolean;
 }
 
-export const ExternalLink: FunctionComponent<ExternalLinkProps> = (props) => {
-  const { keepReferrer = false, ...restProps } = props;
-  const matomo = useMatomo();
+export const ExternalLink: FC<ExternalLinkProps> = (props) => {
+  const { keepReferrer = false, children, ...restProps } = props;
   return (
     <a
       {...restProps}
       target="_blank"
       rel={keepReferrer ? "noopener" : "noopener noreferrer"}
-      onClick={() => matomo.trackLink(props.href)}
     >
-      {props.children || props.href}
+      {children || props.href}
     </a>
   );
 };

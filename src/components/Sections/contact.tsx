@@ -1,29 +1,41 @@
-import { FC, useState, useEffect } from 'react';
+'use client'
 
-import { Links } from '@@/constants';
+import { FC, useEffect, useState } from 'react'
 
-import { SectionProps } from '.';
-import { ContactForm } from '../ContactForm';
-import { Footer } from '../Footer';
-import { HiddenLinkList } from '../HiddenLinkList';
-import { SocialLinks } from '../SocialLinks';
-import { VerticalGridLines } from '../VericalGridLines';
+import { Links } from '@@/constants'
+
+import { SectionProps } from '.'
+import { ContactForm } from '../ContactForm'
+import { Footer } from '../Footer'
+import { HiddenLinkList } from '../HiddenLinkList'
+import { SocialLinks } from '../SocialLinks'
+import { VerticalGridLines } from '../VerticalGridLines'
 
 const Contact: FC<SectionProps> = ({ active }) => {
-  const [showSocialLinks, setShowSocialLinks] = useState(active);
+  const [showSocialLinks, setShowSocialLinks] = useState(!!active)
 
   useEffect(() => {
-    if (active) {
-      setShowSocialLinks(true);
-    } else if (!active && showSocialLinks) {
-      window.setTimeout(() => setShowSocialLinks(false), 500);
+    const timeoutId = window.setTimeout(
+      () => {
+        if (active) {
+          setShowSocialLinks(true)
+          return
+        }
+
+        setShowSocialLinks(false)
+      },
+      active ? 0 : 500,
+    )
+
+    return () => {
+      window.clearTimeout(timeoutId)
     }
-  }, [active]);
+  }, [active])
 
   return (
     <section
       data-anchor="contact"
-      className="section bg-gray-900 bg-no-repeat bg-cover bg-center section-contact "
+      className="section bg-gray-900 bg-no-repeat bg-cover bg-center section-contact"
     >
       <VerticalGridLines />
       <div className="flex h-full w-full flex-col pb-16 md:pb-18 lg:pb-15 xxl:pb-15">
@@ -31,7 +43,7 @@ const Contact: FC<SectionProps> = ({ active }) => {
           <div className="hidden md:block col-span-7" />
           <div className="col-span-24 px-4 md:col-span-12 md:px-0 flex flex-col justify-center h-full">
             <h2 className="text-green-fbit text-4xl md:text-6xl mb-2 md:mb-6 font-bold">
-              let’s talk
+              let&apos;s talk
             </h2>
             <div className="text-white text-lg md:text-2xl lg:text-xl xxl:text-2xl mb-2 md:mb-6">
               Benötigen Sie Unterstützung? Gerne können Sie das Kontaktformular
@@ -46,6 +58,6 @@ const Contact: FC<SectionProps> = ({ active }) => {
       </div>
       <Footer fixed />
     </section>
-  );
-};
-export default Contact;
+  )
+}
+export default Contact

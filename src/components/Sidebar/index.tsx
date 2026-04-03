@@ -1,27 +1,26 @@
-import { FC } from 'react';
+'use client'
 
-import { useInitialization } from '@@/context/FilterProvider';
-import { useTimeout } from '@@/lib/hooks';
+import { FC } from 'react'
 
-import { Fading } from '../Fading';
-import { Menu } from '../Menu';
+import { useInitialization } from '@@/context/FilterProvider'
+import { useTimeout } from '@@/lib/hooks'
+
+import { Fading } from '../Fading'
+import { Menu } from '../Menu'
 
 interface SidebarProps {
-  activeSection?: string;
+  activeSection?: string
 }
 
 export const Sidebar: FC<SidebarProps> = ({ activeSection }) => {
-  // the fading animations of the Sidebar should only be used the first time,
-  // but not on general mounting or unmounting of this component.
-  // So we use react context and some timeout magic.
-  const [initialized, setInitialized] = useInitialization();
+  const [initialized, setInitialized] = useInitialization()
   useTimeout(() => {
-    if (!initialized) setInitialized(true);
-  }, 3000);
+    if (!initialized) setInitialized(true)
+  }, 3000)
 
   return (
-    <div className="hidden md:flex sidebar h-full fixed top-0 left-0 flex-col justify-center z-20">
-      <div className="grid grid-cols-6 absolute top-0 left-0 w-full mt-12">
+    <div className="hidden fixed top-0 left-0 z-20 flex-col justify-center h-full md:flex sidebar">
+      <div className="grid absolute top-0 left-0 grid-cols-6 mt-12 w-full">
         <div className="col-span-1" />
         <div className="col-span-3">
           {initialized ? (
@@ -54,5 +53,5 @@ export const Sidebar: FC<SidebarProps> = ({ activeSection }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

@@ -1,97 +1,94 @@
-import axios from 'axios';
-import clsx from 'clsx';
-import { useFormik } from 'formik';
-import { useState } from 'react';
-import { object, string } from 'yup';
+'use client';
 
-import { useMatomo } from '@@/hooks';
-import { ContactMessage } from '@@/lib/types';
+import clsx from 'clsx';
+import { FormEvent, useState } from 'react';
+
+declare global {
+  interface Window {
+    umami?: {
+      track: (eventName: string, eventData?: Record<string, unknown>) => void;
+    };
+  }
+}
 
 export const ContactForm = () => {
   const [responseMessage, setResponseMessage] = useState<string | null>('');
   const [error, setError] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const matomo = useMatomo();
 
-  const formik = useFormik({
-    initialValues: {
-      company: '',
-      name: '',
-      mail: '',
-      message: '',
-    } as ContactMessage,
-    validationSchema: object({
-      company: string().notRequired(),
-      name: string().required(),
-      mail: string().email().required(),
-      message: string().required(),
-    }),
-    validateOnMount: true,
-    onSubmit: (values) => {
-      setSubmitting(true);
-      axios
-        .post('/api/contact', {
-          company: values.company,
-          name: values.name,
-          mail: values.mail,
-          message: values.message,
-        })
-        .then((response) => {
-          setError(false);
-          formik.resetForm();
-          setResponseMessage(response.data.message);
-          matomo.trackEvent('contact', 'sent');
-        })
-        .catch((error) => {
-          setError(true);
-          if (error.response.data.message)
-            setResponseMessage(error.response.data.message);
-          else setResponseMessage('Ein unbekannter Fehler ist aufgetreten.');
-          matomo.trackEvent('contact', 'error');
-        })
-        .finally(() => setSubmitting(false));
-    },
-  });
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
 
-  const submitDisabled = !formik.isValid || submitting;
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          company: data.get('company'),
+          name: data.get('name'),
+          mail: data.get('mail'),
+          message: data.get('message'),
+        }),
+      });
+
+      const json = await res.json();
+
+      if (res.ok) {
+        setError(false);
+        form.reset();
+        setResponseMessage(json.message);
+        window.umami?.track('Contact Form Sent');
+      } else {
+        setError(true);
+        setResponseMessage(json.message ?? 'Ein unbekannter Fehler ist aufgetreten.');
+        window.umami?.track('Contact Form Error');
+      }
+    } catch {
+      setError(true);
+      setResponseMessage('Ein unbekannter Fehler ist aufgetreten.');
+      window.umami?.track('Contact Form Error');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <div className="contact-form w-full mt-2 md:mt-6">
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="control mt-4 relative">
           <input
-            id="company"
+            name="company"
             className="form-input block w-full sm:text-sm sm:leading-5 text-white"
             placeholder="firma"
-            value={formik.values.company}
-            onChange={formik.handleChange}
           />
         </div>
         <div className="control mt-2 relative">
           <input
-            id="name"
+            name="name"
             className="form-input block w-full sm:text-sm sm:leading-5 text-white"
             placeholder="name"
-            value={formik.values.name}
-            onChange={formik.handleChange}
+            required
           />
         </div>
         <div className="control mt-2 relative">
           <input
-            id="mail"
+            name="mail"
+            type="email"
             className="form-input block w-full sm:text-sm sm:leading-5 text-white"
             placeholder="email"
-            value={formik.values.mail}
-            onChange={formik.handleChange}
+            required
           />
         </div>
         <div className="mt-4 relative h-12 md:h-30">
           <textarea
-            id="message"
+            name="message"
             className="form-input block w-full sm:text-sm sm:leading-5 text-white h-full"
             placeholder="nachricht"
-            value={formik.values.message}
-            onChange={formik.handleChange}
+            required
           />
         </div>
         <div className="mt-4">
@@ -100,11 +97,11 @@ export const ContactForm = () => {
             className={clsx(
               'py-2 px-4 w-full border border-transparent font-bold text-white bg-fbit transition duration-150 ease-in-out',
               {
-                'opacity-50 cursor-not-allowed': submitDisabled,
-                'valid focus:outline-none': !submitDisabled,
+                'opacity-50 cursor-not-allowed': submitting,
+                'valid focus:outline-none': !submitting,
               },
             )}
-            disabled={submitDisabled}
+            disabled={submitting}
           >
             Formular absenden
           </button>

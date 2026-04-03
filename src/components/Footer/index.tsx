@@ -17,17 +17,15 @@ export const Footer: FC<FooterProps> = ({ fixed }) => (
       },
     )}
   >
-    <div className="flex justify-center items-center col-span-24 md:col-span-6">
-        <ExternalLink href="https://blog.f-bit.software" keepReferrer>blog</ExternalLink>
-    </div>
+    <div className="hidden md:block md:col-span-6" />
     <div className="flex justify-center items-center col-span-24 md:col-span-6">
       <Link href="/impress">
-        <a>impressum</a>
+        impressum
       </Link>
     </div>
     <div className="flex justify-center items-center col-span-24 md:col-span-6">
       <Link href="/privacy">
-        <a>datenschutz</a>
+        datenschutz
       </Link>
     </div>
     <div className="hidden justify-center items-center md:flex col-span-24 md:col-span-6">
