@@ -1,10 +1,11 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @source "../src";
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-Regular.woff2') format('woff2'),
+  src:
+    url('/fonts/Montserrat-Regular.woff2') format('woff2'),
     url('/fonts/Montserrat-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
@@ -12,7 +13,8 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-Bold.woff2') format('woff2'),
+  src:
+    url('/fonts/Montserrat-Bold.woff2') format('woff2'),
     url('/fonts/Montserrat-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
@@ -20,7 +22,8 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-BoldItalic.woff2') format('woff2'),
+  src:
+    url('/fonts/Montserrat-BoldItalic.woff2') format('woff2'),
     url('/fonts/Montserrat-BoldItalic.woff') format('woff');
   font-weight: bold;
   font-style: italic;
@@ -28,7 +31,8 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-Italic.woff2') format('woff2'),
+  src:
+    url('/fonts/Montserrat-Italic.woff2') format('woff2'),
     url('/fonts/Montserrat-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
@@ -123,7 +127,7 @@ body {
 }
 
 .section-how {
-  background-image: url('/img/nate-grant-QQ9LainS6tI-unsplash.jpg');
+  background-image: url('/img/keyboard.jpg');
 }
 
 .section-contact {
@@ -136,6 +140,11 @@ body {
   background-blend-mode: multiply;
 }
 
+.section-projects {
+  background-image: url('/img/nasa-Q1p7bh3SHj8-unsplash.jpg');
+  background-color: #77b342;
+  background-blend-mode: multiply;
+}
 
 .text-green-fbit {
   color: #77b342;
@@ -161,7 +170,6 @@ h2 {
   left: 0;
   z-index: 0;
 }
-
 
 .border-col {
   border-right: 1px solid rgba(255, 255, 255, 0.2);
@@ -228,7 +236,6 @@ h2 {
   height: 90%;
   max-width: 90%;
 }
-
 
 #logo img {
   max-width: 160px;

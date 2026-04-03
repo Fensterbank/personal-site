@@ -55,15 +55,6 @@ const Impress: FC<SectionProps> = () => (
               </ExternalLink>
             </p>
             <p className="pl-2">
-              <span className="font-bold">how I do it:</span> Foto von{' '}
-              <ExternalLink
-                className="underline"
-                href="https://unsplash.com/photos/QQ9LainS6tI"
-              >
-                Nate Grant
-              </ExternalLink>
-            </p>
-            <p className="pl-2">
               <span className="font-bold">let&apos;s talk:</span> Foto von{' '}
               <ExternalLink
                 className="underline"

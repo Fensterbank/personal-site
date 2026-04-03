@@ -12,23 +12,19 @@ const How: FC<SectionProps> = () => {
       className="section bg-gray-900 bg-no-repeat bg-cover bg-center section-how"
     >
       <VerticalGridLines />
-      <div className="grid grid-cols-24 relative z-10 mb-10">
-        <div className="hidden md:block col-span-6" />
-        <div className="col-span-24 px-4 md:col-span-12 lg:px-0">
-          <h2 className="text-green-fbit lg:text-center text-4xl md:text-6xl mb-6 font-bold">
+      <div className="grid grid-cols-24 relative z-10">
+        <div className="hidden md:block col-span-9" />
+        <div className="col-span-24 px-4 md:col-span-11 lg:col-span-10 xl:col-span-9 md:px-0">
+          <h2 className="text-green-fbit text-4xl md:text-5xl lg:text-6xl mb-6 font-bold">
             Technology matters.
           </h2>
-        </div>
-        <div className="hidden md:block col-span-6" />
-        <div className="hidden md:block md:col-span-6 lg:col-span-7" />
-        <div className="col-span-24 px-4 md:col-span-12 lg:col-span-10 lg:px-0">
-          <p className="text-white text-lg md:text-2xl lg:text-lg xxl:text-2xl lg:text-center mb-4 md:mb-8">
+          <p className="text-white text-xl md:text-2xl mb-6">
             Bei der Umsetzung von Projekten begleite ich Sie vom ersten Prototyp
             bis zur fertigen Lösung. Dabei lege ich Wert auf den Einsatz von
             erprobten state-of-the-art Technologien, um mit wenig Aufwand
             möglichst moderne und nachhaltige Lösungen zu entwickeln.
           </p>
-          <p className="text-white text-lg md:text-2xl lg:text-xl lg:text-center xxl:text-2xl mb-4 md:mb-8">
+          <p className="text-white text-xl md:text-2xl">
             Benötigen Sie Unterstützung in Ihrem Projekt? Gerne können Sie{' '}
             <a className="font-bold underline cursor-pointer" onClick={(e) => {
               e.preventDefault();
@@ -39,10 +35,6 @@ const How: FC<SectionProps> = () => {
             .
           </p>
         </div>
-        <div className="hidden md:block md:col-span-6 lg:col-span-7" />
-        <div className="hidden md:block col-span-6 lg:col-span-8" />
-        <div className="hidden xs:flex col-span-24 md:col-span-12 lg:col-span-8 justify-between"></div>
-        <div className="hidden md:block md:col-span-6 lg:col-span-8" />
       </div>
     </section>
   )

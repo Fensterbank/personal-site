@@ -19,6 +19,10 @@ const items: LinkItem[] = [
     title: 'home',
   },
   {
+    anchor: 'projects',
+    title: 'what I did',
+  },
+  {
     anchor: 'what',
     title: 'what I do',
   },

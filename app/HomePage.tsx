@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-import { Home, What, How } from '@@/components/Sections';
+import { Home, Projects, What, How } from '@@/components/Sections';
 import Contact from '@@/components/Sections/contact';
 import { Sidebar } from '@@/components/Sidebar';
 
@@ -14,7 +14,7 @@ declare global {
   }
 }
 
-const SECTION_ANCHORS = ['home', 'what', 'how', 'contact'];
+const SECTION_ANCHORS = ['home', 'projects', 'what', 'how', 'contact'];
 
 export default function HomePage() {
   const [activeSection, setActiveSection] = useState('home');
@@ -58,6 +58,7 @@ export default function HomePage() {
     <>
       <div ref={containerRef} className="fullpage-container">
         <Home active={activeSection === 'home'} />
+        <Projects active={activeSection === 'projects'} />
         <What active={activeSection === 'what'} />
         <How active={activeSection === 'how'} />
         <Contact active={activeSection === 'contact'} />
